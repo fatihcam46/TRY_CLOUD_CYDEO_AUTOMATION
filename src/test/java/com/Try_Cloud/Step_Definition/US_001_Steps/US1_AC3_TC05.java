@@ -13,4 +13,5 @@ public class US1_AC3_TC05 {
     public void checkTypeAttributeIsEqualToCopiedValue(String appearceOfPassword) {
         Assert.assertEquals(appearceOfPassword, us_001.password.getAttribute("type"));
     }
+
 }
