@@ -17,7 +17,7 @@ Feature:CLOUD-1154
     Given user on the "https://qa.trycloud.net/index.php/login?clear=1"
     When User  enter "Employee83" in user name field
     And enter "Employee123" in password field
-    When Click on log in button
+    Then Click on log in button and end up on dashboard
 
   @CLOUD-1222
   Scenario:US2_AC1_TC01
