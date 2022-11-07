@@ -1,5 +1,6 @@
 package com.Try_Cloud.Step_Definition.US_002_Steps;
 
+import com.Try_Cloud.POM.LoginPage;
 import com.Try_Cloud.POM.US_001;
 import com.Try_Cloud.POM.US_002;
 import io.cucumber.java.en.Given;
@@ -18,8 +19,10 @@ public class US2_AC1_TC02 {
             us_002.upMenuButtons.get(i).click();
             us_002.userProfileIcon.click();
             us_002.logOutButton.click();
-            us_002.logIn();
+            new LoginPage().logIn();
 
         }
     }
+
+
 }

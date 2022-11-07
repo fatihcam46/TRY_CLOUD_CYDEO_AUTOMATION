@@ -7,7 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-public class US_002 extends LoginPage {
+public class US_002  {
 
     public US_002() {
         PageFactory.initElements(Driver.getDriver(), this);

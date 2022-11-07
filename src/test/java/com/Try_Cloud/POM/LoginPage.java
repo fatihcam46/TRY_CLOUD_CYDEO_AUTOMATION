@@ -20,6 +20,7 @@ public class LoginPage {
     public WebElement password;
 
     public  void logIn(){
+        Driver.getDriver().get(Configuration_Reader.getProperties("url"));
         username.sendKeys(Configuration_Reader.getProperties("username"));
         password.sendKeys(Configuration_Reader.getProperties("password"), Keys.ENTER);
     }

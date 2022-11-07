@@ -7,7 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class US_001 extends LoginPage {
+public class US_001  {
 
     public US_001() {
         PageFactory.initElements(Driver.getDriver(), this);
