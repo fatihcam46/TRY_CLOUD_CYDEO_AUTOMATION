@@ -19,4 +19,9 @@ public class Profile_Settings_Dashboard {
 
     @FindBy(xpath = "//input[@id='displayname']")
     public WebElement inputFullName;
+
+    @FindBy(xpath = " //span[@class='user-status-menu-item__header']")
+    public WebElement profileIconUserName;
+
+
 }
