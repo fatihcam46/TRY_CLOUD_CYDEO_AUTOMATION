@@ -11,4 +11,4 @@
     When user click on the profile settings picture
     And user click on the Settings button
     And user click on the profile settings picture to verify username
-    Then verify if FullName and username are matching
+    Then verify if FullName and "username" are matching
