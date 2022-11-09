@@ -1,8 +1,9 @@
 package com.Try_Cloud.Step_Definition;
 
 import com.Try_Cloud.POM.Deck_Module_POM;
+import com.Try_Cloud.Utilities.BrowserUtils;
 import com.Try_Cloud.Utilities.Driver;
-import io.cucumber.java.Scenario;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
@@ -10,7 +11,6 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
@@ -52,12 +52,10 @@ public class Deck_Module_Ensar {
 
         for (int i = 0; i < boardText.size(); i++) {
             if (!boardText.contains(boardName)) {
-                System.out.println(boardText);
                 Assert.assertTrue(false);
             }
         }
 
-        System.out.println(boardText);
 
     }
 
@@ -66,17 +64,10 @@ public class Deck_Module_Ensar {
         deck_module_pom.submitArrowIcon.click();
     }
 
-    @Then("Check board names has not same name")
-    public void checkBoardNamesHasNotSameName() {
-
-
-    }
-
 
     @When("Create {string} board")
     public void createBoard(String string) {
         deck_module_pom.boardPalaceHolder.sendKeys(string, Keys.ENTER);
-
     }
 
 
@@ -89,9 +80,9 @@ public class Deck_Module_Ensar {
         }
 
         for (int i = 0; i < board.size(); i++) {
-
-            Assert.assertEquals(board.get(i).getText() + " is = " + Collections.frequency(boardText, board.get(i).getText()), 1, Collections.frequency(boardText, board.get(i).getText()));
+            Assert.assertEquals("2 same board created", 1, Collections.frequency(boardText, boardText.get(i)));
         }
+
 
     }
 
@@ -99,13 +90,12 @@ public class Deck_Module_Ensar {
     public void checkNamelessBoardDoesntCreatedUnderBoardTable() {
 
         Driver.getDriver().navigate().refresh();
-        System.out.println("deck_module_pom.boardWebElementToListString() = " + deck_module_pom.boardWebElementToListString());
 
 
         for (int i = 0; i < deck_module_pom.boardWebElementToListString().size(); i++) {
 
-            if (deck_module_pom.boardWebElementToListString().get(i).isBlank()){
-                Assert.assertTrue("White Space Board Name Appears!",false);
+            if (deck_module_pom.boardWebElementToListString().get(i).isBlank()) {
+                Assert.assertTrue("White Space Board Name Appears!", false);
             }
 
         }
@@ -113,6 +103,50 @@ public class Deck_Module_Ensar {
     }
 
 
+    @And("Click on {string} board")
+    public void clickOnBoard(String boardName) {
+
+        List<String> createdBoards = deck_module_pom.boardWebElementToListString();
+
+        for (int i = 0; i < createdBoards.size(); i++) {
+            if (boardName.equals(createdBoards.get(i))) {
+                deck_module_pom.createdBoards.get(i).click();
+                break;
+            }
+        }
+        BrowserUtils.sleep(1);
+    }
+
+    static List<String> dataTableCardList;
+
+    @When("Create card with click on arrow icon")
+    public void createCardWithClickOnArrowIcon(List<String> cardNames) {
+        dataTableCardList = cardNames;
+        for (int i = 0; i < cardNames.size(); i++) {
+            deck_module_pom.createCardWithClick(cardNames.get(i));
+        }
+
+    }
+
+    @Then("Verify expected cards created under {string} board")
+    public void verifyExpectedCardsCreatedUnderBoard(String expectedBoardName) {
+        List<String> actualCards = new ArrayList<>();
+
+        for (int i = 0; i < deck_module_pom.createdCardList.size(); i++) {
+            actualCards.add(deck_module_pom.createdCardList.get(i).getText());
+        }
+
+        Assert.assertEquals(dataTableCardList, actualCards);
+        String actualBoardName = deck_module_pom.boardHeaderForCards.getText();
+        Assert.assertEquals(expectedBoardName, actualBoardName);
+    }
 
 
+    @When("Create card with click on press enter")
+    public void createCardWithClickOnPressEnter(List<String> cardNames) {
+        dataTableCardList = cardNames;
+        for (int i = 0; i < cardNames.size(); i++) {
+            deck_module_pom.createCardWithEnter(cardNames.get(i));
+        }
+    }
 }

@@ -45,18 +45,16 @@ public class Hooks {
     public void deleteBoards(Scenario scenario) {
 
         if (scenario.isFailed()) {
-
             byte[] screenshot = ((TakesScreenshot) Driver.getDriver()).getScreenshotAs(OutputType.BYTES);
             scenario.attach(screenshot, "image/png", scenario.getName());
-
         }
 
-        while(true){
 
+        while(true){
             List<WebElement> boards2 = new Deck_Module_POM().createdBoards3Dots;
 
             boards2.get(boards2.size()-1).click();
-            BrowserUtils.sleep(1);
+
             new Deck_Module_POM().deleteButtonBar.click();
             BrowserUtils.sleep(1);
             new Deck_Module_POM().deleteButtonRedIcon.click();
@@ -69,7 +67,7 @@ public class Hooks {
 
         }
 
-
+        Driver.closeDriver();
 
     }
 

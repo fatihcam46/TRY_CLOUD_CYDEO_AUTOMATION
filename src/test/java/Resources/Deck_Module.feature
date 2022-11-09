@@ -18,11 +18,11 @@ Feature:
 
   @DeleteCreatedBoards
   Scenario Outline: US4_AC01_TC01
-  AC01-User can create a new board with any letter trough enter functionality
+  AC01_TC01-User can create a new board with any letter trough enter functionality
 
     And Click on  add board bar
-    When Write down  "<Board names>" in placeholder as board names
-    Then Press enter on keyboard and verify "<Board names>" board name created
+    Then Write down  "<Board names>" in placeholder as board names
+    When Press enter on keyboard and verify "<Board names>" board name created
     Examples:
       | Board names  |
       | Ensar Folder |
@@ -33,7 +33,7 @@ Feature:
 
   @DeleteCreatedBoards
   Scenario Outline:US4_AC01_TC02
-  AC02-User can create a new board with any letter trough arrow  functionality
+  AC01_TC02-User can create a new board with any letter trough arrow  functionality
 
     And Click on  add board bar
     When Write down  "<Board names>" in placeholder as board names
@@ -49,18 +49,46 @@ Feature:
 
   @DeleteCreatedBoards
   Scenario:US4_AC01_TC03
-  AC03-User can not create a new board with same name
+  AC01_TC03-User can not create a new board with same name
 
     And Click on  add board bar
     When Create "School" board
     And Click on  add board bar
-    When Create "School1" board
+    When Create "School" board
     Then Check doesnt have same board name
 
-  @DeleteCreatedBoards  @wip
+  @DeleteCreatedBoards
   Scenario:US4_AC01_TC04
-  AC04-User can not create a new board with white space
+  AC01_TC04-User can not create a new board with white space
 
     And Click on  add board bar
     When Create "    " board
     Then Check nameless board should not be created under board table
+
+  @DeleteCreatedBoards @wip
+  Scenario:US4_AC02_TC01
+  AC02_TC01 User can create a new list of card/task under any board with click arrow
+    And Click on  add board bar
+    When Create "School" board
+    And Click on "School" board
+    When Create card with click on arrow icon
+      | Ensar  |
+      | Ensar2 |
+      | Ensar3 |
+      | Ensar4 |
+      | Ensar5 |
+    Then Verify expected cards created under "School" board
+
+  @DeleteCreatedBoards @wip
+  Scenario:US4_AC02_TC02
+  AC02_TC02 User can create a new list of card/task under any board with press enter
+    And Click on  add board bar
+    When Create "School" board
+    And Click on "School" board
+    When Create card with click on press enter
+      | Ensar  |
+      | Ensar2 |
+      | Ensar3 |
+      | Ensar4 |
+      | Ensar5 |
+    Then Verify expected cards created under "School" board
