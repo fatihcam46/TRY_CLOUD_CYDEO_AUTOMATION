@@ -44,19 +44,45 @@ public class Deck_Module_POM {
     public WebElement deleteButtonRedIcon;
 
     @FindBy(xpath = "(//button[@rel='noreferrer noopener'])[1]")
-    public WebElement plusIconAddCard;
+    public WebElement plusIconAddList;
 
     @FindBy(xpath = "(//input[@placeholder='List name'])[1]")
-    public WebElement cardNamePlaceHolder;
+    public WebElement listNamePlaceHolder;
 
     @FindBy(xpath = "(//input[@type='submit'])[2]")
-    public WebElement cardNameSubmitArrowIcon;
+    public WebElement listNameSubmitArrowIcon;
 
     @FindBy(xpath = "//div/h3")
-    public List<WebElement> createdCardList;
+    public List<WebElement> createdListList;
 
     @FindBy(xpath = "(//h2)[2]")
-    public WebElement boardHeaderForCards;
+    public WebElement boardHeaderForLists;
+
+    @FindBy(xpath = "(//div/button[@rel='noreferrer noopener'])[4]")
+    public WebElement cardPlusIcon;
+
+    @FindBy(xpath = "//input[@id='new-stack-input-main']")
+    public WebElement cardPlaceHolder;
+
+    @FindBy(xpath = "//input[@class='icon-confirm']")
+    public WebElement cardArrowIcon;
+
+
+    @FindBy(xpath = "//div[@class='badges']//div[@class='trigger']")
+    public List<WebElement> cards3DotIcon;
+
+    @FindBy(xpath = "//*[text()='Assign to me']")
+    public WebElement cardAssignToMe;
+
+    @FindBy(xpath = "//div[@class='avatar-list']//img")
+    public WebElement cardAvatarIcon;
+
+    @FindBy(xpath = "//*[text()='Move card']")
+    public WebElement moveToCard;
+
+    @FindBy(xpath = "//*[@placeholder='Select a board']")
+    public WebElement selectBoard;
+
 
 
     public List<String> boardWebElementToListString() {
@@ -70,16 +96,43 @@ public class Deck_Module_POM {
         return boardText;
     }
 
+
+    public void createBoardWithClick(String boardName) {
+        if (menuExpantButton.getAttribute("aria-expanded").equalsIgnoreCase("false")) {
+            menuExpantButton.click();
+        }
+        addBoard.click();
+        boardPalaceHolder.sendKeys(boardName);
+        submitArrowIcon.click();
+        BrowserUtils.sleep(1);
+
+    }
+
+    public void createListWithClick(String listName) {
+        plusIconAddList.click();
+        listNamePlaceHolder.sendKeys(listName);
+        listNameSubmitArrowIcon.click();
+        BrowserUtils.sleep(1);
+    }
+
+    public void createListWithEnter(String listName) {
+        plusIconAddList.click();
+        listNamePlaceHolder.sendKeys(listName, Keys.ENTER);
+        BrowserUtils.sleep(1);
+    }
+
+
     public void createCardWithClick(String cardName) {
-        plusIconAddCard.click();
-        cardNamePlaceHolder.sendKeys(cardName);
-        cardNameSubmitArrowIcon.click();
-        BrowserUtils.sleep(1);
+        cardPlusIcon.click();
+        cardPlaceHolder.sendKeys(cardName);
+        cardArrowIcon.click();
+
     }
+
     public void createCardWithEnter(String cardName) {
-        plusIconAddCard.click();
-        cardNamePlaceHolder.sendKeys(cardName, Keys.ENTER);
-        BrowserUtils.sleep(1);
+        cardPlusIcon.click();
+        cardPlaceHolder.sendKeys(cardName, Keys.ENTER);
     }
+
 
 }

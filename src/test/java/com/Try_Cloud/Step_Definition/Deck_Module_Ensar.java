@@ -59,15 +59,10 @@ public class Deck_Module_Ensar {
 
     }
 
-    @Then("Click on arrow icon and verify expected board name created")
-    public void clickOnArrowIconAndVerifyExpectedBoardNameCreated() {
-        deck_module_pom.submitArrowIcon.click();
-    }
-
 
     @When("Create {string} board")
-    public void createBoard(String string) {
-        deck_module_pom.boardPalaceHolder.sendKeys(string, Keys.ENTER);
+    public void createBoard(String boardName) {
+        deck_module_pom.createBoardWithClick(boardName);
     }
 
 
@@ -106,6 +101,7 @@ public class Deck_Module_Ensar {
     @And("Click on {string} board")
     public void clickOnBoard(String boardName) {
 
+        BrowserUtils.sleep(1);
         List<String> createdBoards = deck_module_pom.boardWebElementToListString();
 
         for (int i = 0; i < createdBoards.size(); i++) {
@@ -114,39 +110,160 @@ public class Deck_Module_Ensar {
                 break;
             }
         }
-        BrowserUtils.sleep(1);
+
     }
 
     static List<String> dataTableCardList;
 
-    @When("Create card with click on arrow icon")
-    public void createCardWithClickOnArrowIcon(List<String> cardNames) {
+    @When("Create list with click on arrow icon")
+    public void listCardWithClickOnArrowIcon(List<String> cardNames) {
         dataTableCardList = cardNames;
         for (int i = 0; i < cardNames.size(); i++) {
-            deck_module_pom.createCardWithClick(cardNames.get(i));
+            deck_module_pom.createListWithClick(cardNames.get(i));
         }
 
     }
 
-    @Then("Verify expected cards created under {string} board")
+    @Then("Verify expected lists created under {string} board")
     public void verifyExpectedCardsCreatedUnderBoard(String expectedBoardName) {
         List<String> actualCards = new ArrayList<>();
 
-        for (int i = 0; i < deck_module_pom.createdCardList.size(); i++) {
-            actualCards.add(deck_module_pom.createdCardList.get(i).getText());
+        for (int i = 0; i < deck_module_pom.createdListList.size(); i++) {
+            actualCards.add(deck_module_pom.createdListList.get(i).getText());
         }
 
         Assert.assertEquals(dataTableCardList, actualCards);
-        String actualBoardName = deck_module_pom.boardHeaderForCards.getText();
+        String actualBoardName = deck_module_pom.boardHeaderForLists.getText();
         Assert.assertEquals(expectedBoardName, actualBoardName);
     }
 
 
-    @When("Create card with click on press enter")
-    public void createCardWithClickOnPressEnter(List<String> cardNames) {
+    @When("Create list with click on press enter")
+    public void listCardWithClickOnPressEnter(List<String> cardNames) {
         dataTableCardList = cardNames;
         for (int i = 0; i < cardNames.size(); i++) {
-            deck_module_pom.createCardWithEnter(cardNames.get(i));
+            deck_module_pom.createListWithEnter(cardNames.get(i));
         }
     }
+
+    @Then("Click on arrow icon and verify {string} board name created")
+    public void clickOnArrowIconAndVerifyBoardNameCreated(String boardName) {
+        deck_module_pom.submitArrowIcon.click();
+
+        Driver.getDriver().navigate().refresh();
+
+        for (int i = 0; i < board.size(); i++) {
+            boardText.add(board.get(i).getText());
+        }
+
+        for (int i = 0; i < boardText.size(); i++) {
+            if (!boardText.contains(boardName)) {
+                Assert.assertTrue(false);
+            }
+        }
+    }
+
+    @Then("Create lists")
+    public void createLists(List<String> a) {
+
+        for (int i = 0; i < a.size(); i++) {
+            BrowserUtils.sleep(1);
+            deck_module_pom.createListWithEnter(a.get(i));
+        }
+
+
+    }
+
+
+    @Then("Create cards with click enter under every list")
+    public void createCardsWithClickEnterUnderEveryList(List<String> cardNames) {
+
+        for (int i = 0; i < cardNames.size(); i++) {
+
+            deck_module_pom.createCardWithEnter(cardNames.get(i));
+
+            BrowserUtils.sleep(1);
+        }
+
+    }
+
+    @And("Clean deck board")
+    public void cleanDeckBoard() {
+
+        if (deck_module_pom.menuExpantButton.getAttribute("aria-expanded").equalsIgnoreCase("false")) {
+            deck_module_pom.menuExpantButton.click();
+        }
+
+        while (true) {
+            List<WebElement> boards2 = new Deck_Module_POM().createdBoards3Dots;
+
+            if (boards2.size() == 0) {
+                break;
+            }
+
+            boards2.get(boards2.size() - 1).click();
+
+            new Deck_Module_POM().deleteButtonBar.click();
+            BrowserUtils.sleep(1);
+            new Deck_Module_POM().deleteButtonRedIcon.click();
+            Driver.getDriver().navigate().refresh();
+
+            if (boards2.size() == 0) {
+                break;
+            }
+
+
+        }
+
+    }
+
+
+    @Then("Create cards with click click on arrow icon under every list")
+    public void createCardsWithClickClickOnArrowIconUnderEveryList(List<String> cardNames) {
+        for (int i = 0; i < cardNames.size(); i++) {
+
+            deck_module_pom.createCardWithClick(cardNames.get(i));
+
+            BrowserUtils.sleep(1);
+        }
+    }
+
+    @Then("Create {string} list")
+    public void createList(String listName) {
+        deck_module_pom.createListWithClick(listName);
+    }
+
+    @When("Create {string} card")
+    public void createCard(String arg0) {
+        deck_module_pom.createCardWithClick(arg0);
+    }
+
+    @And("click on {int} dot icon")
+    public void clickOnDotIcon(int arg0) {
+        deck_module_pom.cards3DotIcon.get(0).click();
+    }
+
+    @When("click on assign to me button")
+    public void clickOnAssignToMeButton() {
+        deck_module_pom.cardAssignToMe.click();
+    }
+
+
+    @Then("verify profile icon appears in card section")
+    public void verifyProfileIconAppearsInCardSection() {
+        Assert.assertTrue(deck_module_pom.cardAvatarIcon.isDisplayed());
+    }
+
+    @When("click on move to bar")
+    public void clickOnMoveToBar() {
+        deck_module_pom.moveToCard.click();
+
+    }
+
+    @Then("click on select bar")
+    public void clickOnSelectBar() {
+        deck_module_pom.selectBoard.click();
+        BrowserUtils.sleep(10);
+    }
+
 }
