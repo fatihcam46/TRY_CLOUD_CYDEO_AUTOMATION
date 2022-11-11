@@ -17,7 +17,7 @@ import org.junit.runner.RunWith;
         glue = "com/Try_Cloud/Step_Definition",
         features = "src/test/java/Resources",
         dryRun = false,
-        tags = "@LogIN"
+        tags = "@CLOUD-1205"
 
 )
 public class CukesRunner {
