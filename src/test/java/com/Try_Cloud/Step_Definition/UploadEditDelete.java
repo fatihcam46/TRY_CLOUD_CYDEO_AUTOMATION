@@ -85,4 +85,10 @@ public class UploadEditDelete {
      String filePath6="/Users/gokceeksioglu/Desktop/Cydeo/java/day1 java/Cybertek School _ Learn.html";
      uploadEditDeletePage.Uploadbutton.sendKeys(filePath6);
     }
+
+    @Then("user choose sql file from computer")
+    public void user_choose_sql_file_from_computer() {
+      String filePath7="/Users/gokceeksioglu/Desktop/Cydeo/SQL/day1/group_by.sql";
+      uploadEditDeletePage.Uploadbutton.sendKeys(filePath7);
+    }
 }
