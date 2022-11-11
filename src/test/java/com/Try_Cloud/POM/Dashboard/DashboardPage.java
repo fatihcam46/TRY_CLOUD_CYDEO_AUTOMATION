@@ -1,4 +1,4 @@
-package com.Try_Cloud.POM;
+package com.Try_Cloud.POM.Dashboard;
 
 import com.Try_Cloud.Utilities.Driver;
 import org.openqa.selenium.WebElement;

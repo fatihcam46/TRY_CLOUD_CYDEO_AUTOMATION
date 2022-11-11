@@ -1,6 +1,7 @@
 package com.Try_Cloud.Step_Definition;
 
-import com.Try_Cloud.POM.DashboardPage;
+import com.Try_Cloud.POM.Dashboard.DashboardActions;
+import com.Try_Cloud.POM.Dashboard.DashboardPage;
 import com.Try_Cloud.POM.LoginPage;
 import com.Try_Cloud.Utilities.BrowserUtils;
 import com.Try_Cloud.Utilities.Configuration_Reader;
@@ -24,6 +25,7 @@ public class DashboardStepDefinitions {
     Actions actions = new Actions(Driver.getDriver());
     DashboardPage dashboardPage = new DashboardPage();
 
+    DashboardActions dashboardActions = new DashboardActions();
     LoginPage loginPage = new LoginPage();
     JavascriptExecutor jse = (JavascriptExecutor) Driver.getDriver();
     WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 10);
@@ -150,7 +152,6 @@ public class DashboardStepDefinitions {
                     break;
                 }
             }
-
         }
     }
 
@@ -219,11 +220,7 @@ public class DashboardStepDefinitions {
 
     @When("user clicks on a status {string}")
     public void user_clicks_on_a_status(String string) {
-        for (WebElement status : dashboardPage.statusOptions) {
-            if (status.getText().contains(string)) {
-                status.click();
-            }
-        }
+        dashboardActions.clickOnListElement(dashboardPage.statusOptions, string);
     }
 
     @When("user clicks on set status message button")
@@ -241,11 +238,7 @@ public class DashboardStepDefinitions {
 
     @When("user chooses a status message {string}")
     public void user_chooses_a_status_message(String string) {
-        for (WebElement status : dashboardPage.statusMessageList) {
-            if (status.getText().equals(string)) {
-                status.click();
-            }
-        }
+        dashboardActions.clickOnListElement(dashboardPage.statusMessageList, string);
     }
 
     @Then("Then user should be able to see the selected message on dashboard {string}")
