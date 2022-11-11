@@ -32,6 +32,18 @@ Background: User on the dashboard
   Then user add file under "files"
 
 
+@CLOUD-1482
+    Scenario:User can upload a file3 as a png
+      When user choose "files" section on dashboard
+      Then user click "files"
+      And user click "plus" button
+      Then user choose "upload file"
+      And user choose png file from computer
+      Then user add file under "files"
+
+
+
+
 
 
 

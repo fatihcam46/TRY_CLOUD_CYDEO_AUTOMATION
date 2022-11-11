@@ -58,8 +58,14 @@ public class UploadEditDelete {
     @Then("user choose jpg file from computer")
     public void user_choose_jpg_file_from_computer() {
         String filePath2="/Users/gokceeksioglu/Desktop/HTML class/OlafVlog/olaf image.jpeg";
-
         uploadEditDeletePage.Uploadbutton.sendKeys(filePath2);
+
+    }
+
+    @Then("user choose png file from computer")
+    public void user_choose_png_file_from_computer() {
+        String filePath3 = "/Users/gokceeksioglu/Desktop/HTML class/Champion League/Ajax.png";
+        uploadEditDeletePage.Uploadbutton.sendKeys(filePath3);
 
     }
 }
