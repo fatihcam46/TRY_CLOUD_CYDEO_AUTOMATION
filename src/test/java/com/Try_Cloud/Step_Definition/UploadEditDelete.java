@@ -73,4 +73,10 @@ public class UploadEditDelete {
       String filePath4 = "/Users/gokceeksioglu/Desktop/Cydeo/project 3/Project_-_EU9_TryCloud_Sprint-3_Planning.pptx";
       uploadEditDeletePage.Uploadbutton.sendKeys(filePath4);
     }
+
+    @Then("user choose MP4 file from computer")
+    public void user_choose_mp4_file_from_computer() {
+     String filePath5="/Users/gokceeksioglu/Desktop/Cydeo/project 3/Project_Import_Result_IJ_to_JIRA-1.mp4";
+      uploadEditDeletePage.Uploadbutton.sendKeys(filePath5);
+    }
 }
