@@ -23,7 +23,7 @@ Background: User on the dashboard
        And user choose excel file from computer
        Then user add file under "files"
 @CLOUD-1481
-  Scenario:User can upload a file2 as a jpg
+  Scenario:User can upload a file2 as jpg
   When user choose "files" section on dashboard
   Then user click "files"
   And user click "plus" button
@@ -33,7 +33,7 @@ Background: User on the dashboard
 
 
 @CLOUD-1482
-    Scenario:User can upload a file3 as a png
+    Scenario:User can upload a file3 as png
       When user choose "files" section on dashboard
       Then user click "files"
       And user click "plus" button
@@ -42,7 +42,7 @@ Background: User on the dashboard
       Then user add file under "files"
 
 @CLOUD-1483
-    Scenario:User can upload a file4 as a pptx
+    Scenario:User can upload a file4 as pptx
       When user choose "files" section on dashboard
       Then user click "files"
       And user click "plus" button
@@ -51,12 +51,21 @@ Background: User on the dashboard
       Then user add file under "files"
 
 @CLOUD-1484
-    Scenario:User can upload a file5 as a MP4
+    Scenario:User can upload a file5 as  MP4
       When user choose "files" section on dashboard
       Then user click "files"
       And user click "plus" button
       Then user choose "upload file"
       And user choose MP4 file from computer
+      Then user add file under "files"
+
+@CLOUD-1485
+    Scenario:User can upload a file6 as html
+      When user choose "files" section on dashboard
+      Then user click "files"
+      And user click "plus" button
+      Then user choose "upload file"
+      And user choose html file from computer
       Then user add file under "files"
 
 

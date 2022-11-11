@@ -79,4 +79,10 @@ public class UploadEditDelete {
      String filePath5="/Users/gokceeksioglu/Desktop/Cydeo/project 3/Project_Import_Result_IJ_to_JIRA-1.mp4";
       uploadEditDeletePage.Uploadbutton.sendKeys(filePath5);
     }
+
+    @Then("user choose html file from computer")
+    public void user_choose_html_file_from_computer() {
+     String filePath6="/Users/gokceeksioglu/Desktop/Cydeo/java/day1 java/Cybertek School _ Learn.html";
+     uploadEditDeletePage.Uploadbutton.sendKeys(filePath6);
+    }
 }
