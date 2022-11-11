@@ -68,4 +68,9 @@ public class UploadEditDelete {
         uploadEditDeletePage.Uploadbutton.sendKeys(filePath3);
 
     }
+    @Then("user choose pptx file from computer")
+    public void user_choose_pptx_file_from_computer() {
+      String filePath4 = "/Users/gokceeksioglu/Desktop/Cydeo/project 3/Project_-_EU9_TryCloud_Sprint-3_Planning.pptx";
+      uploadEditDeletePage.Uploadbutton.sendKeys(filePath4);
+    }
 }

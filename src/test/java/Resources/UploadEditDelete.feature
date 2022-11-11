@@ -41,6 +41,15 @@ Background: User on the dashboard
       And user choose png file from computer
       Then user add file under "files"
 
+@CLOUD-1483
+    Scenario:User can upload a file4 as a pptx
+      When user choose "files" section on dashboard
+      Then user click "files"
+      And user click "plus" button
+      Then user choose "upload file"
+      And user choose pptx file from computer
+      Then user add file under "files"
+
 
 
 
