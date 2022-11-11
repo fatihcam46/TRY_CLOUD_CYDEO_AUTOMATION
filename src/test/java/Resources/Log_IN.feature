@@ -1,4 +1,4 @@
-@US-001 @CLOUD-1153
+@US-001 @CLOUD-1153 @LogIN
 Feature:CLOUD-1153
   US_001 Login Functionality [AutomationS3-EEZ]
 

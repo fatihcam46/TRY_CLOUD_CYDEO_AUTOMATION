@@ -1,3 +1,4 @@
+@DeckMod
 Feature:
   As a user, I should be able to manage my works by creating a new board/list/card and modifying them under Deck Module.
 
@@ -165,4 +166,9 @@ Feature:
     And click on 3 dot icon
     When click on move to bar
     Then click on select bar
+
+
+
+
+
 
