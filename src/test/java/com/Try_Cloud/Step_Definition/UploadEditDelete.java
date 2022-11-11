@@ -43,12 +43,9 @@ public class UploadEditDelete {
     public void user_choose_excel_file_from_computer() {
         BrowserUtils.sleep(4);
 
-        String abc=System.getProperty("1.xlsx");
-        System.out.println("abc = " + abc);
+        String filePath="/Users/gokceeksioglu/Desktop/1.xlsx";
 
-        //String FilesPath="\\Desktop\\1.xlsx";
-
-        uploadEditDeletePage.Uploadbutton.sendKeys(abc+"\\File\\");
+        uploadEditDeletePage.Uploadbutton.sendKeys(filePath);
         System.out.println("uploadEditDeletePage.Uploadbutton = " + uploadEditDeletePage.Uploadbutton.isSelected());
 
 
@@ -58,8 +55,11 @@ public class UploadEditDelete {
 
     }
 
-    @Then("user choose file from computer")
-    public void user_choose_file_from_computer() {
+    @Then("user choose jpg file from computer")
+    public void user_choose_jpg_file_from_computer() {
+        String filePath2="/Users/gokceeksioglu/Desktop/HTML class/OlafVlog/olaf image.jpeg";
+
+        uploadEditDeletePage.Uploadbutton.sendKeys(filePath2);
 
     }
 }

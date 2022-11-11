@@ -14,21 +14,21 @@
 
 Background: User on the dashboard
   Given the user is logged in
-
-      Scenario: User can upload a file
+@CLOUD-1480
+      Scenario: User can upload a file as excel
         When user choose "files" section on dashboard
         Then user click "files"
         And user click "plus" button
         Then user choose "upload file"
-      And user choose excel file from computer
+       And user choose excel file from computer
        Then user add file under "files"
-@wip
-  Scenario:User can upload a file2
+@CLOUD-1481
+  Scenario:User can upload a file2 as a jpg
   When user choose "files" section on dashboard
   Then user click "files"
   And user click "plus" button
   Then user choose "upload file"
-  And user choose file from computer
+  And user choose jpg file from computer
   Then user add file under "files"
 
 

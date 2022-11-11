@@ -17,7 +17,7 @@ public class UploadEditDeletePage {
     @FindBy(xpath="//span[@class='icon icon-add']")
     public WebElement plusButton;
 
-    @FindBy(xpath = "//label[@for='file_upload_start']")
+    @FindBy(id="file_upload_start")
     public WebElement Uploadbutton;
 
 
