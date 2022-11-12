@@ -9,6 +9,16 @@ public class Dashboard {
     public Dashboard(){
         PageFactory.initElements(Driver.getDriver(),this);
     }
+
+
     @FindBy(className = "header-menu__trigger")
     public WebElement searchButton;
+    @FindBy(xpath = "//input[@type = 'search']")
+    public WebElement searchBox;
+
+    @FindBy(xpath = "//span[@class = 'unified-search__result-content']")
+    public WebElement searchResult;
+
+
+
 }
