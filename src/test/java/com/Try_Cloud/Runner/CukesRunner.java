@@ -11,8 +11,8 @@ import org.junit.runner.RunWith;
         plugin = {
                 "json:target/cucumber.json",
                 "html:target/cucumber-report.html",
-                "rerun:target/rerun.txt",
-                "me.jvt.cucumber.report.PrettyReports:target/cucumber"
+                "rerun:target/rerun.txt"
+                //"me.jvt.cucumber.report.PrettyReports:target/cucumber"
         },
         glue = "com/Try_Cloud/Step_Definition",
         features = "src/test/java/Resources",
