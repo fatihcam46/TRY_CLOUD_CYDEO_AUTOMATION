@@ -50,12 +50,12 @@
         </dependency>
 
 
-        <!-- Cucumber report  -->
-        <dependency>
-            <groupId>me.jvt.cucumber</groupId>
-            <artifactId>reporting-plugin</artifactId>
-            <version>5.1.0</version>
-        </dependency>
+<!--        &lt;!&ndash; Cucumber report  &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>me.jvt.cucumber</groupId>-->
+<!--            <artifactId>reporting-plugin</artifactId>-->
+<!--            <version>3.15.0</version>-->
+<!--        </dependency>-->
 
         <!-- https://mvnrepository.com/artifact/org.assertj/assertj-core -->
         <dependency>
