@@ -39,16 +39,19 @@ public class US1_AC2_TC03 {
     @When("enter {string} in password field")
     public void enter_in_password_filed(String string) {
         us_001.password.sendKeys(string);
+        System.out.println("Working");
     }
 
     @When("Press enter")
     public void press_enter() {
+
+        System.out.println("Working");
         us_001.password.sendKeys(Keys.ENTER);
     }
 
     @Then("Check user encounter massage {string}")
     public void check_user_encounter_massage(String string) {
-
+        System.out.println("Working");
 //        try {
             Assert.assertTrue(us_001.errorMessage.getText().equals(string));
 //        } catch (Exception e) {

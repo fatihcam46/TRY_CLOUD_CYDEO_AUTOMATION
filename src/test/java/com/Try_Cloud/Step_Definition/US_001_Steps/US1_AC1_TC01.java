@@ -15,6 +15,8 @@ public class US1_AC1_TC01 {
     }
     @Then("Check  title is {string}")
     public void check_title_is(String string) {
+
+        System.out.println("Working");
         Assert.assertEquals(string, Driver.getDriver().getTitle());
     }
 
