@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
+import static org.jsoup.helper.Validate.fail;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -247,7 +248,7 @@ public class BrowserUtils {
             assertTrue("Element not visible: " + by, Driver.getDriver().findElement(by).isDisplayed());
         } catch (NoSuchElementException e) {
             e.printStackTrace();
-
+            fail("Element not found: " + by);
 
         }
     }
@@ -279,6 +280,7 @@ public class BrowserUtils {
             assertTrue("Element not visible: " + element, element.isDisplayed());
         } catch (NoSuchElementException e) {
             e.printStackTrace();
+            fail("Element not found: " + element);
 
         }
     }
