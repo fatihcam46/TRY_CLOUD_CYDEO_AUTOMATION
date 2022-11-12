@@ -6,6 +6,8 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.assertj.core.api.Assertions;
+import org.junit.Assert;
 
 public class Search_Step_Definitons {
     LoginPage loginPage = new LoginPage();
@@ -20,10 +22,16 @@ public class Search_Step_Definitons {
     public void userClicksToMagnifyingSearchButton() {
         dashboard.searchButton.click();
     }
-    @And("user types into search box {string} and user should see page {string}")
-    public void userTypesIntoSearchBoxAndUserShouldSeePage(String search, String details) {
-    dashboard.searchBox.sendKeys(search);
-    dashboard.searchResult.getText().contains(details);
+
+
+    @And("user types into search box {string}")
+    public void userTypesIntoSearchBox(String search) {
+        dashboard.searchBox.sendKeys(search);
+    }
+
+    @Then("user should see page {string}")
+    public void userShouldSeePage(String details) {
+        Assert.assertEquals(dashboard.searchResult.getText(),details);
     }
 }
 

@@ -10,12 +10,21 @@ Feature: :
   User can search file typing its name through the magnifying glass icon inside
   any Module and see the details side page of the file when clicked on it.
     When user clicks to magnifying search button
-    And user types into search box "<search>" and user should see page "<details>"
+    And user types into search box "<search>"
+    Then user should see page "<details>"
     Examples:
       | search   | details  |
-      | files    | files    |
-      | photos   | photos   |
-      | activity | activity |
+      | files    | Files    |
+      | photos   | Photos   |
+      | activity | Activity |
+
+    Scenario:
+    User can search contacts by clicking on the contacts icon and typing its name
+
+
+
+
+
 
 
 
