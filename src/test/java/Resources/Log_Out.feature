@@ -1,4 +1,4 @@
-@US-002 @CLOUD-1225 @LogOUT
+@US-002
 Feature:CLOUD-1154
   US-002 Log out Functionality [AutomationS3-EEZ]
 
