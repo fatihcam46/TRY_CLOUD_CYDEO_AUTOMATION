@@ -88,6 +88,18 @@ Background: User on the dashboard
     And user create new name
     Then user add file under "files"
 
+@CLOUD-1488
+
+Scenario:User can move selected item any selected folder
+  When user choose "files" section on dashboard
+  Then user click "files"
+  And user click any file for moving any selected folder
+  Then user should click "actions" button
+  And user should click "move/copy"
+  Then user should select any folder
+  Then user click "move" button and file "move" selected folder
+
+
 
 
 

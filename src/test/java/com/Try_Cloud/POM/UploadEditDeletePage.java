@@ -26,6 +26,21 @@ public class UploadEditDeletePage {
     @FindBy(xpath = "//input[@class='icon-confirm']")
     public WebElement submitIcon;
 
+    @FindBy(xpath = "/html/body/div[3]/div[2]/div[2]/table/tbody/tr[7]/td[1]")
+    public WebElement checkBox;
+
+    @FindBy(id="selectedActionsList")
+    public WebElement actionButton;
+
+    @FindBy(xpath = "//span[@class='label'][1]")
+    public WebElement moveOrCopy;
+
+    @FindBy(xpath = "/html/body/div[9]/div[1]/div/table/tbody/tr[3]/td[1]")
+    public WebElement selectFolder;
+
+    @FindBy(xpath = "//button[@class='primary']")
+    public WebElement moveButton;
+
 
 
 

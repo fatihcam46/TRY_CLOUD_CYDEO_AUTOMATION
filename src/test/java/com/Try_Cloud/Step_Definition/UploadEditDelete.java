@@ -7,6 +7,7 @@ import com.Try_Cloud.Utilities.Driver;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.By;
 import org.openqa.selenium.interactions.Actions;
 
 public class UploadEditDelete {
@@ -111,6 +112,37 @@ public class UploadEditDelete {
         Actions actions=new Actions(Driver.getDriver());
         actions.sendKeys(uploadEditDeletePage.newFolder,"Gokce's folder").perform();
         uploadEditDeletePage.submitIcon.click();
+
+    }
+
+    @Then("user click any file for moving any selected folder")
+    public void user_click_any_file_for_moving_any_selected_folder() {
+        Driver.getDriver().findElement(By.xpath("/html/body/div[3]/div[2]/div[2]/table/tbody/tr[7]/td[1]")).getAttribute("class");
+        String ajax=uploadEditDeletePage.checkBox.getAttribute("class");
+        uploadEditDeletePage.checkBox.isSelected();
+        uploadEditDeletePage.checkBox.click();
+
+
+    }
+    @Then("user should click {string} button")
+    public void user_should_click_button(String string) {
+
+        uploadEditDeletePage.actionButton.click();
+
+    }
+    @Then("user should click {string}")
+    public void user_should_click(String string) {
+        uploadEditDeletePage.moveOrCopy.click();
+
+    }
+    @Then("user should select any folder")
+    public void user_should_select_any_folder() {
+        uploadEditDeletePage.selectFolder.click();
+
+    }
+    @Then("user click {string} button and file {string} selected folder")
+    public void user_click_button_and_file_selected_folder(String string, String string2) {
+        uploadEditDeletePage.moveButton.click();
 
     }
 
