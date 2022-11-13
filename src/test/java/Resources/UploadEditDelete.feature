@@ -79,6 +79,22 @@ Background: User on the dashboard
       Then user add file under "files"
 
 
+@CLOUD-1487
+  Scenario:User can create a new folder
+    When user choose "files" section on dashboard
+    Then user click "files"
+    And user click "plus" button
+    Then user choose "new folder" and click on it
+    And user create new name
+    Then user add file under "files"
+
+
+
+
+
+
+
+
 
 
 

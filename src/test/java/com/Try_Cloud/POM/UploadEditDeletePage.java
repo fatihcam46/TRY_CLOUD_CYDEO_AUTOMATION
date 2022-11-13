@@ -20,6 +20,12 @@ public class UploadEditDeletePage {
     @FindBy(id="file_upload_start")
     public WebElement Uploadbutton;
 
+    @FindBy(xpath = "//span[@class='icon icon-folder svg']")
+    public WebElement newFolder;
+
+    @FindBy(xpath = "//input[@class='icon-confirm']")
+    public WebElement submitIcon;
+
 
 
 
