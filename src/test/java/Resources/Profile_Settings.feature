@@ -18,7 +18,6 @@
   Scenario: User can change visibility of Full name under Profile Settings page
     When user click on the profile settings picture
     And user click on the Settings button
-    And user click on the icon next to Full name
-    And user check if status options is displayed
+    And user click on the icon next to Full name and check status options are displayed
     And user choose another status and provide the valid password
-    Then verify if user get changed the status successfully
+    Then verify if user changed the status successfully

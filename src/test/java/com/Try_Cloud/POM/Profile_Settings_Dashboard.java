@@ -23,7 +23,7 @@ public class Profile_Settings_Dashboard {
     @FindBy(xpath = " //span[@class='user-status-menu-item__header']")
     public WebElement profileIconUserName;
 
-    @FindBy(xpath = "(//span[@class='icon-triangle-s'])[1]")
+    @FindBy(xpath = "(//div[@class='federation-menu'])[2]")
     public WebElement iconVisibilityFullName;
 
     @FindBy(xpath = "//div[@class='federationScopeMenu popovermenu bubble menu menu-center']/ul")
