@@ -47,4 +47,7 @@ public class Profile_Settings_Dashboard {
     @FindBy(xpath = "//p[.='Failed to authenticate, try again']")
     public WebElement msgWarning;
 
+    @FindBy(xpath = "//input[@id='displaynamescope']")
+    public WebElement privatestatus;
+
 }
