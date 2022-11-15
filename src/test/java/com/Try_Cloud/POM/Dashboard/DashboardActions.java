@@ -16,6 +16,7 @@ public class DashboardActions {
         for (WebElement element : list) {
             if (element.getText().contains(expectedElementText)) {
                 element.click();
+                break;
             }
         }
     }
