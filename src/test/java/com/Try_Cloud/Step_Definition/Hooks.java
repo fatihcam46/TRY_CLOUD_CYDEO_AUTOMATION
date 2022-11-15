@@ -36,7 +36,7 @@ public class Hooks {
 
         }
         System.out.println("Close working"+scenario.getName());
-        Driver.closeDriver();
+      Driver.closeDriver();
 
     }
 

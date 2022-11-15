@@ -83,7 +83,8 @@ public class Deck_Module_POM {
     @FindBy(xpath = "//*[@placeholder='Select a board']")
     public WebElement selectBoard;
 
-
+    @FindBy(xpath = "//*[@id=\"body-user\"]/div[6]/div[2]/div/div/div[1]/div[3]/ul/li/span/div")
+    public List<WebElement> moveBoardsList;
 
     public List<String> boardWebElementToListString() {
 
@@ -96,11 +97,23 @@ public class Deck_Module_POM {
         return boardText;
     }
 
+    public List<String> moveBoardsTextStrings(){
+
+        List<String> moveBardsTextString=new ArrayList<>();
+
+        for (int i = 0; i < moveBoardsList.size(); i++) {
+            moveBardsTextString.add(moveBoardsList.get(i).getAttribute("title"));
+        }
+
+        return moveBardsTextString;
+    }
+
 
     public void createBoardWithClick(String boardName) {
         if (menuExpantButton.getAttribute("aria-expanded").equalsIgnoreCase("false")) {
             menuExpantButton.click();
         }
+        BrowserUtils.sleep(2);
         addBoard.click();
         boardPalaceHolder.sendKeys(boardName);
         submitArrowIcon.click();
@@ -134,5 +147,24 @@ public class Deck_Module_POM {
         cardPlaceHolder.sendKeys(cardName, Keys.ENTER);
     }
 
+
+    public  void createCardFromSracth(String rootStr){
+
+        createBoardWithClick(rootStr);
+
+        BrowserUtils.sleep(1);
+        List<String> createdBoards = boardWebElementToListString();
+
+        for (int i = 0; i < createdBoards.size(); i++) {
+            if (rootStr.equals(createdBoards.get(i))) {
+               this.createdBoards.get(i).click();
+                break;
+            }
+        }
+
+        createListWithClick(rootStr+"-List");
+
+        createCardWithClick(rootStr+"-Card");
+    }
 
 }

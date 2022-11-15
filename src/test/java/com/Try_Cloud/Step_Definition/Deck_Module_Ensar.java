@@ -266,4 +266,62 @@ public class Deck_Module_Ensar {
         BrowserUtils.sleep(10);
     }
 
+    @When("Created {string} card")
+    public void createdCard(String arg0) {
+        deck_module_pom.createCardFromSracth(arg0);
+    }
+
+    @Then("Verify boards  match with select board list")
+    public void verifyBoardsMatchWithSelectBoardList() {
+        List<String> boardWebElementToListString = deck_module_pom.boardWebElementToListString();
+        List<String> moveBoardsTextStrings = deck_module_pom.moveBoardsTextStrings();
+        Collections.sort(boardWebElementToListString);
+        Collections.sort(moveBoardsTextStrings);
+        Assert.assertEquals(boardWebElementToListString, moveBoardsTextStrings);
+
+    }
+
+    @When("Click on {string}")
+    public void clickOn(String arg0) {
+        
+    }
+
+    @And("Click on Select list")
+    public void clickOnSelectList() {
+        
+    }
+
+    @Then("Click on {string} under list")
+    public void clickOnUnderList(String arg0) {
+        
+    }
+
+    @When("Click on move card button")
+    public void clickOnMoveCardButton() {
+        
+    }
+
+    @Then("Verify expected card moved under expected list")
+    public void verifyExpectedCardMovedUnderExpectedList() {
+    }
+
+    @Then("Click on tree dot icon")
+    public void clickOnTreeDotIcon() {
+     deck_module_pom.createdBoards3Dots.get(0).click();
+    }
+
+    @And("Click on delete board")
+    public void clickOnDeleteBoard() {
+        deck_module_pom.deleteButtonBar.click();
+    }
+
+    @And("click red delete button")
+    public void clickRedDeleteButton() {
+        deck_module_pom.deleteButtonRedIcon.click();
+    }
+
+    @Then("Verify {string} deleted board disappeared from boards")
+    public void verifyDeletedBoardDisappearedFromBoards(String boardName) {
+        Assert.assertTrue(deck_module_pom.boardWebElementToListString().contains(boardName));
+    }
 }
