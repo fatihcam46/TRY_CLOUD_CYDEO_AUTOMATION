@@ -4,6 +4,7 @@ import com.Try_Cloud.Utilities.Driver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+
 import java.util.List;
 
 public class DashboardPage {
@@ -95,11 +96,23 @@ public class DashboardPage {
     @FindBy(xpath = "//div//li/input/following-sibling::label")
     public List<WebElement> widgets;
 
+    @FindBy(xpath = "//*[@id='status-weather']")
+    public WebElement weatherWidgetOnDashboard;
+
     @FindBy(xpath = "//button[contains (@style, \"background-image\")]")
     public List<WebElement> images;
 
     @FindBy(xpath = "//*[@id=\"body-user\"]/div[6]/div[2]/div/div/div/button[18]")
-    public WebElement lastImage;
+    public WebElement lastBackgroundImage;
+
+    @FindBy (xpath = "//input[@class=\"action-input__input focusable\"]")
+    public WebElement locationInputBox;
+
+    @FindBy(xpath="//p[@class=\"action-link__longtext\"]")
+    public WebElement weatherInfo;
+
+
+
 
 
 }
