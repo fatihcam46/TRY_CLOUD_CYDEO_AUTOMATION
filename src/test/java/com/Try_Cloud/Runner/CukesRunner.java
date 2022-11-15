@@ -20,6 +20,7 @@ import org.junit.runner.RunWith;
         tags = "@CLOUD-1454"
 
 )
+
 public class CukesRunner {
 
 }
