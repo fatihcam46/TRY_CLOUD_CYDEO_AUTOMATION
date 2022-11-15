@@ -217,8 +217,8 @@ public class CalendarModuleStepDef {
     }
     @Then("User should be able to delete event")
     public void user_should_be_able_to_delete_event() {
-        BrowserUtils.waitForVisibility(calendarModulePage.deletedEvent,10);
-        Assert.assertTrue(calendarModulePage.deletedEvent.isDisplayed());
+       // BrowserUtils.waitForVisibility(calendarModulePage.deletedEvent,10);
+        Assert.assertTrue(calendarModulePage.clickEvent.isEnabled());
 
 
     }

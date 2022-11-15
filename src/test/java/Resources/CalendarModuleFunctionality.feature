@@ -1,4 +1,4 @@
-@wip
+@CLOUD-1454
 Feature: TRYCLOUD Calendar Module Functionality
   Agile story: As a user, I should be able to see Daily-Weekly-Monthly calendar view and
   create a new event under the Calendar module
@@ -8,6 +8,7 @@ Feature: TRYCLOUD Calendar Module Functionality
     Given the user is logged in
 
 
+     @CLOUD-1507
     Scenario: User can display daily calendar view
       When User click to the calendar module
       And User click to the view section
@@ -18,6 +19,7 @@ Feature: TRYCLOUD Calendar Module Functionality
 
 
 
+      @CLOUD-1535
     Scenario: User can display weekly calendar view
       When User click to the calendar module
       And User click to the view section
@@ -25,6 +27,7 @@ Feature: TRYCLOUD Calendar Module Functionality
       Then User should be able to see weekly calendar view
 
 
+        @CLOUD-1536
     Scenario: User can display monthly calendar view
       When User click to the calendar module
       And User click to the view section
@@ -32,8 +35,27 @@ Feature: TRYCLOUD Calendar Module Functionality
       Then User should be able to see monthly calendar view
 
 
+  @CLOUD-1541
+  Scenario: User can delete any event through the Monthly Calendar view by clicking on the event and
+  then using “more” option
+    When User click to the calendar module
+    And User click to the New Event button
+    And User enter the Event Title "Kubra Birthday"
+    And User click to All day box
+    And User click to the start date box
+    And User choose the start date from calendar
+    And User click to the save button
+    And User click to the view section
+    And User click to the Month
+    And User click on the event
+    And User click to the more button
+    And User click to the three dot button
+    And User click to the Delete button
+    Then User should be able to delete event
 
 
+
+       @CLOUD-1537
     Scenario: User can create a new event under the Calendar module and see it
     on the related day through the Monthly Calendar view
       When User click to the calendar module
@@ -56,6 +78,8 @@ Feature: TRYCLOUD Calendar Module Functionality
 
 
 
+
+      @CLOUD-1538
   Scenario: User can create new event without Event title
     When User click to the calendar module
     And User click to the New Event button
@@ -76,7 +100,9 @@ Feature: TRYCLOUD Calendar Module Functionality
 
 
 
-  Scenario: User can create new event all day
+
+     @CLOUD-1539
+    Scenario: User can create new event all day
     When User click to the calendar module
     And User click to the New Event button
     And User enter the Event Title "Kubra Birthday"
@@ -90,31 +116,7 @@ Feature: TRYCLOUD Calendar Module Functionality
 
 
 
-
-
-    Scenario: User can delete any event through the Monthly Calendar view by clicking on the event and
-    then using “more” option
-      When User click to the calendar module
-      And User click to the New Event button
-      And User enter the Event Title "Kubra Birthday"
-      And User click to All day box
-      And User click to the start date box
-      And User choose the start date from calendar
-      And User click to the save button
-      And User click to the view section
-      And User click to the Month
-      And User click on the event
-      And User click to the more button
-      And User click to the three dot button
-      And User click to the Delete button
-      Then User should be able to delete event
-
-
-
-
-
-
-
+      @CLOUD-1544
   Scenario: Users can add location to their event if they want
     When User click to the calendar module
     And User click to the New Event button
