@@ -38,6 +38,7 @@ public class Hooks {
         System.out.println("Close working"+scenario.getName());
       Driver.closeDriver();
 
+
     }
 
     // That is the issue "Ensar"
