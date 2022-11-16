@@ -15,5 +15,11 @@ public class US1_AC3_TC05 {
         Assert.assertEquals(appearceOfPassword, us_001.password.getAttribute("type"));
     }
 
+    @When("Click on log in button")
+    public void clickOnLogInButton() {
+        System.out.println("Working");
+        us_001.loginButton.click();
+    }
+
 
 }
