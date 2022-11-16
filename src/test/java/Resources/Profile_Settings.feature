@@ -18,6 +18,7 @@
   Scenario: User can change visibility of Full name under Profile Settings page
     When user click on the profile settings picture
     And user click on the Settings button
-    And user click on the icon next to Full name to check status options are displayed
-    And user choose private status and provide the valid password
-    Then verify if user changed the status successfully
+    And user click on the icon next to Full name
+    And user choose public status and provide the valid password
+    And refresh the page to see if status changed successfully
+    Then replace back the default status
