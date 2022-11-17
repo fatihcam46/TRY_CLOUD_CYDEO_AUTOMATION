@@ -4,7 +4,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class Folder_View {
+public class Folder_View_stepDefinition {
     @Given("user is file page")
     public void userIsFilePage() {
 
