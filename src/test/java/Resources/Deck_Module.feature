@@ -13,6 +13,7 @@ Feature:
   +5- User can move any card on the current board to any other list of other board
   +6-User can delete boards
 
+
   Background:
     Given the user is logged in
 
