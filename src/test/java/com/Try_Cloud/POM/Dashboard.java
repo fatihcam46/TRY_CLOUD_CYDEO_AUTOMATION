@@ -19,6 +19,49 @@ public class Dashboard {
     @FindBy(xpath = "//span[@class = 'unified-search__result-content']")
     public WebElement searchResult;
 
+    @FindBy(xpath = "//*[@id=\"app-sidebar-vue\"]/header/div[1]/div[2]/div[2]/h2")
+    public WebElement resultText;
+
+    @FindBy(xpath = "//div[@class ='icon-contacts menutoggle']")
+    public WebElement contactIcon;
+    @FindBy(id = "contactsmenu-search")
+    public WebElement contactSearch;
+
+    @FindBy(xpath = "//*[@id=\"contactsmenu-contacts\"]/div/div/div/div[1]")
+    public WebElement contactResult;
+
+    @FindBy(xpath = "//*[@id=\"appmenu\"]/li[2]/a")
+    public WebElement filesApp;
+
+    @FindBy(xpath="//span[@class='icon icon-add']")
+    public WebElement plusButton;
+
+    @FindBy(id="file_upload_start")
+    public WebElement uploadButton;
+
+    @FindBy(xpath = "//*[@id=\"appmenu\"]/li[3]/a")
+    public WebElement photosApp;
+
+    @FindBy(xpath = "//img[@alt =\"Bug Description.png\"]")
+    public WebElement uploadedPhoto;
+
+    @FindBy(className = "oc-dialog-title")
+    public WebElement conflictAlert;
+
+    @FindBy(xpath = "//label[@for='checkbox-allnewfiles']")
+    public WebElement newFiles;
+
+    @FindBy(className = "continue")
+    public WebElement continueButton;
+
+
+
+
+
+
+
+
+
 
 
 }
