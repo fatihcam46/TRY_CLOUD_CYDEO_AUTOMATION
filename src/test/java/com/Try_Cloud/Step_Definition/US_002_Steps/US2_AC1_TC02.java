@@ -4,6 +4,7 @@ import com.Try_Cloud.POM.LoginPage;
 import com.Try_Cloud.POM.US_001;
 import com.Try_Cloud.POM.US_002;
 import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 import java.util.List;

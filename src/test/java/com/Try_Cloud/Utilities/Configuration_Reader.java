@@ -1,5 +1,8 @@
 package com.Try_Cloud.Utilities;
 
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;

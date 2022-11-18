@@ -12,11 +12,6 @@ public class US2_AC1_TC01 {
     US_002 us_002 = new US_002();
 
 
-    @Given("the user is logged in")
-    public void theUserIsLoggedIn() {
-        new LoginPage().logIn();
-    }
-
     @When("Click profile icon")
     public void click_profile_icon() {
         us_002.userProfileIcon.click();
