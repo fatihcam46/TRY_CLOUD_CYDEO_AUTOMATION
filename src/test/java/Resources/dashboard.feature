@@ -1,6 +1,6 @@
 @smoke @CLOUD-1522
 Feature: Dashboard functionality
-  User Story: As a user I should be able to modify Dashboard page
+  User Story: As a user, I should be able to modify Dashboard page.
 
   Acceptance Criteria
   1. After Login user can see all modules and Username.
