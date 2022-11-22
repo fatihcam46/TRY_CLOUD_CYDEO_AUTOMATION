@@ -66,9 +66,8 @@ public class DashboardPage {
     @FindBy(xpath = "//*[@id='app-dashboard']/h2")
     public WebElement greetingMessageOnTop;
 
-
-    @FindBy(css = "div[class='user-status-online-select']")
-    public List<WebElement> statusOptions;
+    // @FindBy(css = "div[class='user-status-online-select']")
+    // public List<WebElement> statusOptions;
 
     public WebElement getLocatorForOneStatus(String statusName) {
         String statusNameToAdd = "";
@@ -113,6 +112,41 @@ public class DashboardPage {
 
     @FindBy(xpath = "//*[@id='status-weather']")
     public WebElement weatherWidgetOnDashboard;
+
+    public WebElement getLocatorForOneWidget(String widgetName) {
+        String widgetNameToAdd = "";
+        switch (widgetName.toLowerCase()) {
+            case "status":
+                widgetNameToAdd = "status-checkbox-status";
+                break;
+            case "weather":
+                widgetNameToAdd = "status-checkbox-weather";
+                break;
+            case "upcoming events":
+                widgetNameToAdd = "panel-checkbox-calendar";
+                break;
+            case "upcoming cards":
+                widgetNameToAdd = "panel-checkbox-deck";
+                break;
+            case "important mail":
+                widgetNameToAdd = "panel-checkbox-mail";
+                break;
+            case "unread mail":
+                widgetNameToAdd = "panel-checkbox-mail-unread";
+                break;
+            case "recommended files":
+                widgetNameToAdd = "panel-checkbox-recommendations";
+                break;
+            case "talk mentions":
+                widgetNameToAdd = "panel-checkbox-spreed";
+                break;
+            case "recent statuses":
+                widgetNameToAdd = "panel-checkbox-user_status";
+                break;
+        }
+        String xpath = "//label[@for='" + widgetNameToAdd + "']";
+        return Driver.getDriver().findElement(By.xpath(xpath));
+    }
 
     @FindBy(xpath = "//button[contains (@style, 'background-image')]")
     public List<WebElement> images;
