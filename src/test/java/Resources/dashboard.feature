@@ -84,8 +84,9 @@ Feature: Dashboard functionality
   @CLOUD-1514
   Scenario: user can select all status widgets on customize page
     When user clicks on customize button
-    And user clicks on all widgets one by one
+    And user clicks on all widgets one by one to select
     Then user should be able to see all widgets selected
+
 
   @CLOUD-1515
   Scenario: user can deselect all status widgets on customize page
@@ -108,7 +109,7 @@ Feature: Dashboard functionality
       | 5  |
       | 7  |
       | 13 |
-      | 11 |
+      | 91 |
 
   @CLOUD-1518
   Scenario Outline: user can select status options

@@ -6,15 +6,14 @@ import com.Try_Cloud.Utilities.BrowserUtils;
 import com.Try_Cloud.Utilities.Configuration_Reader;
 import com.Try_Cloud.Utilities.Driver;
 import io.cucumber.java.en.*;
-import org.assertj.core.api.Assertions;
 import org.junit.Assert;
-import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -34,8 +33,8 @@ public class DashboardStepDefinitions {
 
     @When("user hovers over a {string} button on top left")
     public void user_hovers_over_a_module_button_on_top_left(String string) {
-
         actions.moveToElement(dashboardPage.getLocatorForOneModule(string)).perform();
+
         // If you want to use the List<WebElement> modules from DashboardPage, the loop below will do fine.
         // String actualModuleLabel;
         // for (WebElement module : dashboardPage.modules) {
@@ -50,7 +49,7 @@ public class DashboardStepDefinitions {
 
     @Then("user should be able to see the {string} name highlighted")
     public void user_should_be_able_to_see_the_module_name_highlighted(String string) {
-        String actualModuleLabel ;
+        String actualModuleLabel;
         for (WebElement module : dashboardPage.modules) {
             actualModuleLabel = module.getText();
             if (actualModuleLabel.equals(string)) {
@@ -78,8 +77,8 @@ public class DashboardStepDefinitions {
 
     @When("user clicks on the {string}")
     public void user_clicks_on_the_module(String string) {
-
         dashboardPage.clickOnListElement(dashboardPage.modules, string);
+
         // If you don't want to use this custom method, the loop below will do fine
         // String actualModuleLabel = "";
         // for (WebElement module : dashboardPage.modules) {
@@ -94,7 +93,7 @@ public class DashboardStepDefinitions {
 
     @Then("user should be able to see the {string} page")
     public void user_should_be_able_to_see_the_module_page(String string) {
-        String actualModuleLabel ;
+        String actualModuleLabel;
         for (WebElement module : dashboardPage.modules) {
             actualModuleLabel = module.getText();
             if (actualModuleLabel.equalsIgnoreCase(string)) {
@@ -131,46 +130,41 @@ public class DashboardStepDefinitions {
         Assert.assertTrue(widgetsListFromFeature.containsAll(actualWidgets));
     }
 
-    @When("user clicks on all widgets one by one")
-    public void user_clicks_on_all_widgets_one_by_one() {
-        wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("//div//li/input/following-sibling::label")));
+
+    @When("user clicks on all widgets one by one to select")
+    public void user_clicks_on_all_widgets_one_by_one_to_select() {
+        //wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("//div//li/input/following-sibling::label")));
         for (int i = 0; i < dashboardPage.widgets.size(); i++) {
-            BrowserUtils.selectCheckBox(dashboardPage.widgets.get(i), true);
+            if (!dashboardPage.widgetCheckboxes.get(i).isSelected()) {
+                actions.click(dashboardPage.widgets.get(i)).perform();
+            }
         }
     }
 
     @Then("user should be able to see all widgets selected")
     public void user_should_be_able_to_see_all_widgets_selected() {
         for (int i = 0; i < dashboardPage.widgetCheckboxes.size(); i++) {
-            if (dashboardPage.widgetCheckboxes.get(i).isSelected()) {
-                Assert.assertTrue(dashboardPage.widgetCheckboxes.get(i).isSelected());
-                if (!(dashboardPage.widgetCheckboxes.get(i).isSelected())) {
-                    Assert.assertFalse(dashboardPage.widgetCheckboxes.get(i).isSelected());
-                    break;
-                }
-            }
+            Assert.assertTrue("WARNING: Widget not selected", dashboardPage.widgetCheckboxes.get(i).isSelected());
         }
     }
-
 
     @When("user clicks on all widgets one by one to deselect")
     public void user_clicks_on_all_widgets_one_by_one_to_deselect() {
-        wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("//div//li/input/following-sibling::label")));
-        for (int i = 0; i < dashboardPage.widgets.size(); i++) {
-            BrowserUtils.selectCheckBox(dashboardPage.widgets.get(i), true);
+        //wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("//div//li/input/following-sibling::label")));
+        ArrayList<WebElement> widgetArray = new ArrayList<>(dashboardPage.widgets);
+        for (int i = dashboardPage.widgets.size()-1; i>=0; i--) {
+            if (dashboardPage.widgetCheckboxes.get(i).isSelected()) {
+                actions.click(widgetArray.get(i)).perform();
+                BrowserUtils.sleep(1);
+            }
         }
     }
 
+
     @Then("user should be able to see all widgets deselected")
     public void user_should_be_able_to_see_all_widgets_deselected() {
-        for (int i = 0; i < dashboardPage.widgetCheckboxes.size(); i++) {
-            if (dashboardPage.widgetCheckboxes.get(i).isSelected()) {
-                Assert.assertTrue(dashboardPage.widgetCheckboxes.get(i).isSelected());
-                if (!(dashboardPage.widgetCheckboxes.get(i).isSelected())) {
-                    Assert.assertFalse(dashboardPage.widgetCheckboxes.get(i).isSelected());
-                    break;
-                }
-            }
+        for (WebElement widget : dashboardPage.widgetCheckboxes) {
+            Assert.assertFalse("WARNING: Widget not deselected", widget.isSelected());
         }
     }
 
@@ -183,13 +177,7 @@ public class DashboardStepDefinitions {
     @Then("user should be able to see background images")
     public void user_should_be_able_to_see_background_images() {
         for (int i = 0; i < dashboardPage.images.size(); i++) {
-            if (dashboardPage.images.get(i).isDisplayed()) {
-                Assert.assertTrue(dashboardPage.images.get(i).isDisplayed());
-                if (!(dashboardPage.images.get(i).isDisplayed())) {
-                    Assert.assertFalse(dashboardPage.images.get(i).isDisplayed());
-                    break;
-                }
-            }
+            Assert.assertTrue("WARNING: Image is not displayed", dashboardPage.images.get(i).isDisplayed());
         }
     }
 
@@ -203,9 +191,6 @@ public class DashboardStepDefinitions {
                     String classAttValueOfSelectedImage = dashboardPage.images.get(i).getAttribute("class");
                     String expectedAttValueOfSelectedImage = "background active";
                     Assert.assertEquals(classAttValueOfSelectedImage, expectedAttValueOfSelectedImage);
-                    if (!classAttValueOfSelectedImage.equals(expectedAttValueOfSelectedImage)) {
-                        Assert.assertNotEquals(classAttValueOfSelectedImage, expectedAttValueOfSelectedImage);
-                    }
                 }
             }
         }
@@ -213,14 +198,24 @@ public class DashboardStepDefinitions {
 
     @When("user clicks on set status button on dashboard")
     public void user_clicks_on_set_status_button_on_dashboard() {
-        wait.until(ExpectedConditions.elementToBeClickable(dashboardPage.statusButtonOnDashboard));
+        user_clicks_on_customize_button();
+        if(!(dashboardPage.widgetCheckboxes.get(0).isSelected())){
+            actions.click(dashboardPage.getLocatorForOneWidget("status")).perform();
+        }
+        //wait.until(ExpectedConditions.elementToBeClickable(dashboardPage.statusButtonOnDashboard));
+        BrowserUtils.sleep(3);
         actions.click(dashboardPage.greetingMessageOnTop).perform();
-        dashboardPage.statusButtonOnDashboard.click();
+        //wait.until(ExpectedConditions.elementToBeClickable(dashboardPage.statusButtonOnDashboard));
+        BrowserUtils.sleep(3);
+        actions.click(dashboardPage.statusButtonOnDashboard).perform();
     }
 
     @When("user clicks on a {string}")
     public void user_clicks_on_a_status(String string) {
-        dashboardPage.getLocatorForOneStatus(string).click();
+        //wait.until(ExpectedConditions.elementToBeClickable(dashboardPage.getLocatorForOneStatus(string)));
+        BrowserUtils.sleep(3);
+        actions.click(dashboardPage.getLocatorForOneStatus(string)).perform();
+
         // If you want to use the List<WebElement> statusOptions from DashboardPage, the loop below will do fine.
         // for (WebElement status : dashboardPage.statusOptions) {
         //    if (status.getText().contains(string)) {
@@ -278,20 +273,27 @@ public class DashboardStepDefinitions {
 
     @When("user clicks on weather widget on dashboard")
     public void user_clicks_on_weather_widget_on_dashboard() {
-        wait.until(ExpectedConditions.visibilityOf(dashboardPage.weatherWidgetOnDashboard));
+
+        user_clicks_on_customize_button();
+        if(!(dashboardPage.widgetCheckboxes.get(1).isSelected())){
+            actions.click(dashboardPage.getLocatorForOneWidget("weather")).perform();
+        }
+        actions.click(dashboardPage.greetingMessageOnTop).perform();
+        //wait.until(ExpectedConditions.elementToBeClickable(dashboardPage.weatherWidgetOnDashboard));
+        BrowserUtils.sleep(3);
         actions.click(dashboardPage.weatherWidgetOnDashboard).perform();
-        wait.until(ExpectedConditions.visibilityOf(dashboardPage.locationInputBox));
     }
 
     @When("user clicks on address box")
     public void user_clicks_on_address_box() {
+        wait.until(ExpectedConditions.elementToBeClickable(dashboardPage.locationInputBox));
+        //BrowserUtils.sleep(3);
         actions.moveToElement(dashboardPage.locationInputBox).click().perform();
     }
 
     @When("user types a {string} in address box")
     public void user_types_a_in_address_box(String string) {
         actions.sendKeys(string + Keys.ENTER).perform();
-        System.out.println(dashboardPage.weatherInfo.getText());
     }
 
     @Then("user should be able to see the weather for the {string} typed on dashboard")
