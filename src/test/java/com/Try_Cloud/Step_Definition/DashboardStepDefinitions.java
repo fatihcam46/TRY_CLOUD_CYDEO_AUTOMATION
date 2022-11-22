@@ -6,6 +6,7 @@ import com.Try_Cloud.Utilities.BrowserUtils;
 import com.Try_Cloud.Utilities.Configuration_Reader;
 import com.Try_Cloud.Utilities.Driver;
 import io.cucumber.java.en.*;
+import org.assertj.core.api.Assertions;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -28,21 +29,22 @@ public class DashboardStepDefinitions {
 
     @Given("user is logged in")
     public void user_is_logged_in() {
-        Driver.getDriver().get(Configuration_Reader.getProperties("url"));
         loginPage.logIn();
     }
 
     @When("user hovers over a {string} button on top left")
     public void user_hovers_over_a_module_button_on_top_left(String string) {
 
-        String actualModuleLabel;
-        for (WebElement module : dashboardPage.modules) {
-            actualModuleLabel = module.getAttribute("aria-label");
-            if (string.equals(actualModuleLabel)) {
-                actions.moveToElement(module).perform();
-                break;
-            }
-        }
+        actions.moveToElement(dashboardPage.getLocatorForOneModule(string)).perform();
+        // If you want to use the List<WebElement> modules from DashboardPage, the loop below will do fine.
+        // String actualModuleLabel;
+        // for (WebElement module : dashboardPage.modules) {
+        //    actualModuleLabel = module.getAttribute("aria-label");
+        //    if (string.equals(actualModuleLabel)) {
+        //        actions.moveToElement(module).perform();
+        //        break;
+        //    }
+        // }
 
     }
 
@@ -78,15 +80,16 @@ public class DashboardStepDefinitions {
     public void user_clicks_on_the_module(String string) {
 
         dashboardPage.clickOnListElement(dashboardPage.modules, string);
-//        String actualModuleLabel = "";
-//        for (WebElement module : dashboardPage.modules) {
-//            actualModuleLabel = module.getText();
-//            if (actualModuleLabel.equals(string)) {
-//                wait.until(ExpectedConditions.elementToBeClickable(module));
-//                actions.click(module).perform();
-//                break;
-//            }
-//        }
+        // If you don't want to use this custom method, the loop below will do fine
+        // String actualModuleLabel = "";
+        // for (WebElement module : dashboardPage.modules) {
+        //    actualModuleLabel = module.getText();
+        //    if (actualModuleLabel.equals(string)) {
+        //        wait.until(ExpectedConditions.elementToBeClickable(module));
+        //        actions.click(module).perform();
+        //        break;
+        //    }
+        // }
     }
 
     @Then("user should be able to see the {string} page")
@@ -146,9 +149,9 @@ public class DashboardStepDefinitions {
                     break;
                 }
             }
-
         }
     }
+
 
     @When("user clicks on all widgets one by one to deselect")
     public void user_clicks_on_all_widgets_one_by_one_to_deselect() {
@@ -217,11 +220,13 @@ public class DashboardStepDefinitions {
 
     @When("user clicks on a {string}")
     public void user_clicks_on_a_status(String string) {
-        for (WebElement status : dashboardPage.statusOptions) {
-            if (status.getText().contains(string)) {
-                status.click();
-            }
-        }
+        dashboardPage.getLocatorForOneStatus(string).click();
+        // If you want to use the List<WebElement> statusOptions from DashboardPage, the loop below will do fine.
+        // for (WebElement status : dashboardPage.statusOptions) {
+        //    if (status.getText().contains(string)) {
+        //        status.click();
+        //    }
+        // }
     }
 
     @When("user clicks on set status message button on the new opening page")
@@ -295,5 +300,4 @@ public class DashboardStepDefinitions {
         wait.until(ExpectedConditions.textToBePresentInElement(dashboardPage.weatherInfo, string));
         Assert.assertTrue(dashboardPage.weatherInfo.getText().contains(string));
     }
-
 }
