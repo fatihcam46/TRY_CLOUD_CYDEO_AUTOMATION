@@ -10,7 +10,7 @@ import org.junit.Assert;
 
 public class EditEnterProfileStepDefinition {
 
-    //US1_1
+    //TC1  @CLOUD-1498
     EditEnterProfileSettingsPage profile = new EditEnterProfileSettingsPage();
 
     @Given("User clicks profile icon")
@@ -34,18 +34,21 @@ public class EditEnterProfileStepDefinition {
         System.out.println("Assertion working");
     }
 
-    //  US1_2
+    //  TC2  @CLOUD-1499
     @Then("user enters {string} Full name information")
     public void userEntersFullNameInformation(String string) {
         profile.fullName.clear();
         profile.fullName.sendKeys(string);
+        Assert.assertTrue(profile.fullName.isDisplayed());
     }
-    //  US1_3
+
+    //  TC3   @CLOUD-1500
     @Then("user enters {string} Phone number information")
     public void userEntersPhoneNumberInformation(String string) {
         profile.phoneNumber.clear();
         profile.phoneNumber.sendKeys(string);
     }
+
     @When("user clicks to lock button`s arrow")
     public void userClicksToLockButtonSArrow() {
         profile.lockButton.click();
@@ -54,15 +57,16 @@ public class EditEnterProfileStepDefinition {
     @And("user chooses the private button to make Phone number info private")
     public void userChoosesThePrivateButtonToMakePhoneNumberInfoPrivate() {
         profile.privateButton.click();
+        //  Assert.assertTrue(profile.privateButton.isDisplayed());
     }
 
-  //  @Then("user writes password {string} in the authentication required screen")
- //   public void userWritesPasswordInTheAuthenticationRequiredScreen(String string) {
- //       profile.fullName.clear();
- //       profile.fullName.sendKeys(string);
+    //  @Then("user writes password {string} in the authentication required screen")
+    //   public void userWritesPasswordInTheAuthenticationRequiredScreen(String string) {
+    //       profile.fullName.clear();
+    //       profile.fullName.sendKeys(string);
 //    }
 
-    //  US1_4
+    //  TC4  @CLOUD-1501
     @When("user clicks on the {string}`s menu")
     public void userClicksOnTheSMenu(String arg0) {
         profile.phoneNumber.click();
@@ -76,6 +80,7 @@ public class EditEnterProfileStepDefinition {
     @When("user clicks on the Phone Number inputbox")
     public void userClicksOnThePhoneNumberInputbox() {
     }
+
     @And("user enters {string}  without number")
     public void userEntersWithoutNumber(String characters) {
         profile.phoneNumber.sendKeys(characters);
@@ -85,42 +90,53 @@ public class EditEnterProfileStepDefinition {
     @Then("user should not be able to type any {string} except number on the Phone Number inputbox")
     public void userShouldNotBeAbleToTypeAnyExceptNumberOnThePhoneNumberInputbox(String characters) {
 
-        for (int i =0; i<characters.length();i++){
-            Assert.assertTrue(Character.isDigit(characters.charAt(i)));
-            System.out.println(characters.charAt(i)+" is not a number.");
+        for (int i = 0; i < characters.length(); i++) {
+            if (Character.isDigit(characters.charAt(i))){
+               continue;
+            }else if (Character.isLetter(characters.charAt(i))){
+                Assert.assertFalse(Character.isDigit(characters.charAt(i)));
+                System.out.println(characters.charAt(i) + " is not a number.");
+                break;
+            }else {
+                Assert.assertFalse(Character.isDigit(characters.charAt(i)));
+                System.out.println(characters.charAt(i) + " is not a number.");
+                break;
+            }
         }
-    }
-    //  US1_5
+        }
 
-    @And("sees the current local time under the Local dropdown")
-    public void seesTheCurrentLocalTimeUnderTheLocalDropdown() {
-        BrowserUtils.waitFor(2);
-        System.out.println("Local Time : " + profile.localTime.getText());
+        //  TC5  @CLOUD-1502
+
+        @And("sees the current local time under the Local dropdown")
+        public void seesTheCurrentLocalTimeUnderTheLocalDropdown () {
+            BrowserUtils.waitFor(2);
+            System.out.println("Local Time : " + profile.localTime.getText());
+            Assert.assertTrue(profile.localTime.isDisplayed());
+        }
+        //  TC6  @CLOUD-1503
+        @When("user clicks on the Address menu")
+        public void userClicksOnTheAddressMenu () {
+            profile.addressButton.click();
+        }
+
+        @Then("user enters {string} his or her Address")
+        public void userEntersHisOrHerAddress (String string){
+            profile.addressButton.clear();
+            profile.addressButton.sendKeys(string);
+            BrowserUtils.waitFor(2);
+            Assert.assertTrue(profile.addressButton.isDisplayed());
+        }
+        //  TC7  @CLOUD-1504
+        @When("user clicks on the language menu")
+        public void userClicksOnTheLanguageMenu () {
+            profile.language.click();
+        }
+        @Then("user clicks his or her English language")
+        public void userClicksHisOrHerEnglishLanguage () {
+            profile.languageEnglish.click();
+            Assert.assertTrue(profile.languageEnglish.isDisplayed());
+        }
+
 
     }
-    //  US1_6
-    @When("user clicks on the Address menu")
-    public void userClicksOnTheAddressMenu() {
-        profile.addressButton.click();
-    }
-
-    @Then("user enters {string} his or her Address")
-    public void userEntersHisOrHerAddress(String string) {
-        profile.addressButton.clear();
-        profile.addressButton.sendKeys(string);
-        BrowserUtils.waitFor(2);
-    }
-    //  US1_7
-    @When("user clicks on the language menu")
-    public void userClicksOnTheLanguageMenu() {
-        profile.language.click();
-    }
-    @Then("user clicks his or her Turkish language")
-    public void userClicksHisOrHerTurkishLanguage() {
-        profile.languageTurkish.click();
-    }
-
-
-
-}
 

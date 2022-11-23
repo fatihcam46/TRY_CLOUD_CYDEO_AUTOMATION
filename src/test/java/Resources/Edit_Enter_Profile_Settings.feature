@@ -20,21 +20,19 @@ Feature:
   # Given User clicks profile icon
   # Given User clicks on the settings menu
   @CLOUD-1498
-  Scenario:US1_1
-  1-User can see at least following titles inside personal info under Profile Settings page;
+  Scenario:TC1-User can see at least following titles inside personal info under Profile Settings page
     Given User clicks profile icon
     Given User clicks on the settings menu
     Then user sees Full name or Email or Phone Number
 
   @CLOUD-1499
-  Scenario:US1_2
-  2-User can change "Full name" info under Profile Settings page
+  Scenario:TC2-User can change "Full name" info under Profile Settings page
     Given User clicks profile icon
     Given User clicks on the settings menu
     Then user enters "Employee83" Full name information
+
   @CLOUD-1500
-  Scenario:US1_3
-  3-User can make "Phone number" info as private under Profile Settings page
+  Scenario:TC3-User can make "Phone number" info as private under Profile Settings page
     Given User clicks profile icon
     Given User clicks on the settings menu
     Then user enters "+44 7478 7686 96" Phone number information
@@ -43,8 +41,7 @@ Feature:
   #  Then user writes password "Employee123" in the authentication required screen
 
   @CLOUD-1501
-  Scenario Outline:US1_4
-  4-User cannot pass any characters, except number, into the "Phone Number" inputbox
+  Scenario Outline:TC4-User cannot pass any characters, except number, into the "Phone Number" inputbox
     Given User clicks profile icon
     Given User clicks on the settings menu
     When user clicks on the Phone Number inputbox
@@ -54,33 +51,31 @@ Feature:
  #   Then user writes password "Employee123" in the authentication required screen
     Examples:
       | characters      |
+      | 12345678        |
       | Employee        |
       | #@{}eee         |
-      | ________        |
-      | ======          |
+      | __56____        |
+      | 9876=           |
 
   @CLOUD-1502
-  Scenario:US1_5
-  5-User can see the current local time under the Local dropdown
+  Scenario:TC5-User can see the current local time under the Local dropdown
     Given User clicks profile icon
     Given User clicks on the settings menu
     And sees the current local time under the Local dropdown
 
   @CLOUD-1503
-  Scenario:US1_6
-  6-User can make an address on the Address menu
+  Scenario:TC6-User can make an address on the Address menu
     Given User clicks profile icon
     Given User clicks on the settings menu
     When user clicks on the Address menu
     Then user enters " 25 Queen Street, Birmingham,UK " his or her Address
   #  Then user writes password "Employee123" in the authentication required screen
   @CLOUD-1504
-  Scenario:US1_7
-  7-User can change a language on the language menu
+  Scenario:TC7-User can change a language on the language menu
     Given User clicks profile icon
     Given User clicks on the settings menu
     When user clicks on the language menu
-    Then user clicks his or her Turkish language
+    Then user clicks his or her English language
 
 
 
