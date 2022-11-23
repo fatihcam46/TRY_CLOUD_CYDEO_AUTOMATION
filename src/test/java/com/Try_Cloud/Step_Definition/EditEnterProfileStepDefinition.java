@@ -2,10 +2,12 @@ package com.Try_Cloud.Step_Definition;
 
 import com.Try_Cloud.POM.EditEnterProfileSettingsPage;
 import com.Try_Cloud.Utilities.BrowserUtils;
+import com.Try_Cloud.Utilities.Driver;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.assertj.core.api.Assertions;
 import org.junit.Assert;
 
 public class EditEnterProfileStepDefinition {
@@ -90,53 +92,74 @@ public class EditEnterProfileStepDefinition {
     @Then("user should not be able to type any {string} except number on the Phone Number inputbox")
     public void userShouldNotBeAbleToTypeAnyExceptNumberOnThePhoneNumberInputbox(String characters) {
 
+
+        Driver.getDriver().navigate().refresh();
+
+        // _P3*sadsa34332432423
+
+        // 34324asdas
+
+        String actualPhoneNumber = profile.phoneNumber.getAttribute("value");
+
         for (int i = 0; i < characters.length(); i++) {
-            if (Character.isDigit(characters.charAt(i))){
-               continue;
-            }else if (Character.isLetter(characters.charAt(i))){
-                Assert.assertFalse(Character.isDigit(characters.charAt(i)));
-                System.out.println(characters.charAt(i) + " is not a number.");
-                break;
-            }else {
-                Assert.assertFalse(Character.isDigit(characters.charAt(i)));
-                System.out.println(characters.charAt(i) + " is not a number.");
+
+            Character myChars = actualPhoneNumber.charAt(i);
+
+            if (!Character.isDigit(myChars)){
+                Assert.assertTrue("It is wrong beacause = " + actualPhoneNumber,false);
                 break;
             }
-        }
-        }
-
-        //  TC5  @CLOUD-1502
-
-        @And("sees the current local time under the Local dropdown")
-        public void seesTheCurrentLocalTimeUnderTheLocalDropdown () {
-            BrowserUtils.waitFor(2);
-            System.out.println("Local Time : " + profile.localTime.getText());
-            Assert.assertTrue(profile.localTime.isDisplayed());
-        }
-        //  TC6  @CLOUD-1503
-        @When("user clicks on the Address menu")
-        public void userClicksOnTheAddressMenu () {
-            profile.addressButton.click();
-        }
-
-        @Then("user enters {string} his or her Address")
-        public void userEntersHisOrHerAddress (String string){
-            profile.addressButton.clear();
-            profile.addressButton.sendKeys(string);
-            BrowserUtils.waitFor(2);
-            Assert.assertTrue(profile.addressButton.isDisplayed());
-        }
-        //  TC7  @CLOUD-1504
-        @When("user clicks on the language menu")
-        public void userClicksOnTheLanguageMenu () {
-            profile.language.click();
-        }
-        @Then("user clicks his or her English language")
-        public void userClicksHisOrHerEnglishLanguage () {
-            profile.languageEnglish.click();
-            Assert.assertTrue(profile.languageEnglish.isDisplayed());
-        }
 
 
+//            if (Character.isDigit(characters.charAt(i))){
+//               continue;
+//            }else if (Character.isLetter(characters.charAt(i))){
+//                Assert.assertFalse(Character.isDigit(characters.charAt(i)));
+//                System.out.println(characters.charAt(i) + " is not a number.");
+//                break;
+//            }else {
+//                Assert.assertFalse(Character.isDigit(characters.charAt(i)));
+//                System.out.println(characters.charAt(i) + " is not a number.");
+//                break;
+//            }
+        }
     }
+
+    //  TC5  @CLOUD-1502
+
+    @And("sees the current local time under the Local dropdown")
+    public void seesTheCurrentLocalTimeUnderTheLocalDropdown() {
+        BrowserUtils.waitFor(2);
+        System.out.println("Local Time : " + profile.localTime.getText());
+        Assert.assertTrue(profile.localTime.isDisplayed());
+    }
+
+    //  TC6  @CLOUD-1503
+    @When("user clicks on the Address menu")
+    public void userClicksOnTheAddressMenu() {
+        profile.addressButton.click();
+    }
+
+    @Then("user enters {string} his or her Address")
+    public void userEntersHisOrHerAddress(String string) {
+        profile.addressButton.clear();
+        profile.addressButton.sendKeys(string);
+        BrowserUtils.waitFor(2);
+        Assert.assertTrue(profile.addressButton.isDisplayed());
+    }
+
+    //  TC7  @CLOUD-1504
+    @When("user clicks on the language menu")
+    public void userClicksOnTheLanguageMenu() {
+        profile.language.click();
+    }
+
+    @Then("user clicks his or her English language")
+    public void userClicksHisOrHerEnglishLanguage() {
+        profile.languageEnglish.click();
+        Assert.assertTrue(profile.languageEnglish.isDisplayed());
+    }
+
+
+}
 
