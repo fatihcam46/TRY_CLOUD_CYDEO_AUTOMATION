@@ -95,9 +95,6 @@ public class EditEnterProfileStepDefinition {
 
         Driver.getDriver().navigate().refresh();
 
-        // _P3*sadsa34332432423
-
-        // 34324asdas
 
         String actualPhoneNumber = profile.phoneNumber.getAttribute("value");
         for (int i = 0; i < characters.length(); i++) {
@@ -105,7 +102,7 @@ public class EditEnterProfileStepDefinition {
             Character myChars = actualPhoneNumber.charAt(i);
 
             if (!Character.isDigit(myChars)){
-                Assert.assertTrue("It is wrong beacause = " + actualPhoneNumber,false);
+                Assert.assertTrue("It is wrong because = " + actualPhoneNumber,false);
                 break;
             }
 
