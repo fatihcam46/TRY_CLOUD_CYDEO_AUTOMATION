@@ -100,7 +100,6 @@ public class EditEnterProfileStepDefinition {
         // 34324asdas
 
         String actualPhoneNumber = profile.phoneNumber.getAttribute("value");
-
         for (int i = 0; i < characters.length(); i++) {
 
             Character myChars = actualPhoneNumber.charAt(i);

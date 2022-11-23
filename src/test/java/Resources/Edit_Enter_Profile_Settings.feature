@@ -47,6 +47,7 @@ Feature:
     When user clicks on the Phone Number inputbox
     And user clears his or her phone number
     And user enters "<characters>"  without number
+
     Then user should not be able to type any "<characters>" except number on the Phone Number inputbox
  #   Then user writes password "Employee123" in the authentication required screen
     Examples:
