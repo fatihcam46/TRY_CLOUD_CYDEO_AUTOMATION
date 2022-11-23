@@ -40,8 +40,8 @@ public class EditEnterProfileSettingsPage {
     @FindBy(xpath = "//*[@id=\"languageinput\"]")
     public WebElement language;
 
-    @FindBy(xpath = "//*[@id=\"languageinput\"]/option[16]")
-    public WebElement languageTurkish;
+    @FindBy(xpath = "//*[@id=\"localeinput\"]/option[1]")
+    public WebElement languageEnglish;
 
 
 }
