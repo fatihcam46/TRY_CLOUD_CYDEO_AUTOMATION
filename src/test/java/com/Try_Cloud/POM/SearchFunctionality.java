@@ -5,8 +5,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class Dashboard {
-    public Dashboard(){
+
+public class SearchFunctionality {
+    public SearchFunctionality(){
         PageFactory.initElements(Driver.getDriver(),this);
     }
 
@@ -53,6 +54,12 @@ public class Dashboard {
 
     @FindBy(className = "continue")
     public WebElement continueButton;
+
+    @FindBy(id = "nextcloud")
+    public  WebElement tcicon;
+
+    @FindBy(xpath = "//a[@href = '/index.php/apps/dashboard/']")
+    public WebElement dashboardButton;
 
 
 
