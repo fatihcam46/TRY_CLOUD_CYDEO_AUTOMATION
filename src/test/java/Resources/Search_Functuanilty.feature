@@ -1,6 +1,6 @@
 
-@Search
-Feature: :
+@CLOUD-1458
+Feature:
   As a user, I should be able to search file or contact from the Dashboard and
   see the photos under Photos Module
 
@@ -49,6 +49,7 @@ Feature: :
     When user clicks on Trycloud icon
     Then user should be back to Dashboard page
 
+   @CLOUD-1574
     Scenario:
       User can navigate to the Dashboard page whenever clicking the dashboard button
       When user clicks to photos button
