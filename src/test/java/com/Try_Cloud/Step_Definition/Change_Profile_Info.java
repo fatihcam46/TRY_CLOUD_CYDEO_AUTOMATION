@@ -17,7 +17,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Change_Profile_Info {
 
-    //AC01
+    //AC01 @CLOUD-1472
     Profile_Settings_Dashboard profile_settings_dashboard = new Profile_Settings_Dashboard();
     WebDriverWait wait = new WebDriverWait(Driver.getDriver(),8);
     @When("user click on the profile settings picture")
@@ -46,7 +46,7 @@ public class Change_Profile_Info {
         Assert.assertEquals("Names are not matching",actualFullName,iconUserName);
     }
 
-    //AC02
+    //AC02 @CLOUD-1546
 
     @When("user click on the icon next to Full name to check actualStatus")
     public void user_click_on_the_icon_next_to_full_to_check_actualStatus() {
@@ -87,7 +87,7 @@ public class Change_Profile_Info {
         Assert.assertTrue("Status did not change",profile_settings_dashboard.statusSelected.getAttribute("value").contains("public"));
     }
 
-    //TC03
+    //TC03 @CLOUD-1564
 
     @When("user click email input box and clear the existing email")
     public void user_click_email_input_box_and_clear_the_existing_email() {
@@ -155,7 +155,7 @@ public class Change_Profile_Info {
     }
 
 
-    //TC04
+    //TC04 @CLOUD-1565
     @When("user write a {string} that has an {string},{string} and {string}")
     public void user_write_a_that_has_an_and(String email, String accountName, String domain, String top_level_domain) {
         try {
@@ -186,7 +186,7 @@ public class Change_Profile_Info {
 
     }
 
-    //TC05
+    //TC05 @CLOUD-1566
     @When("user click to language placeholder to check the default language")
     public void user_click_to_language_placeholder_to_check_the_default_language() {
         wait.until(ExpectedConditions.elementToBeClickable(profile_settings_dashboard.languageInput));
@@ -221,7 +221,7 @@ public class Change_Profile_Info {
 
     }
 
-    //TC06
+    //TC06 @CLOUD-1567
     @When("user click to location placeholder to check the default language")
     public void user_click_to_location_placeholder_to_check_the_default_language() {
         wait.until(ExpectedConditions.elementToBeClickable(profile_settings_dashboard.locationInput));
@@ -256,7 +256,7 @@ public class Change_Profile_Info {
 
     }
 
-    //TC07
+    //TC07 @CLOUD-1568
     @When("user reset the profile visibility to default settings")
     public void user_reset_the_profile_visibility_to_default_settings() {
         try {
