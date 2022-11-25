@@ -69,8 +69,6 @@ public class Change_Profile_Info {
                 } catch (NoSuchElementException e) {
                     System.out.println("Exception wasn't handled in try block");
                 }
-            }else {
-                System.out.println("Exception didn't happen");
             }
         }catch (NoSuchElementException e){
             System.out.println("Exception got executed");
@@ -106,8 +104,6 @@ public class Change_Profile_Info {
                 } catch (NoSuchElementException e) {
                     System.out.println("Exception wasn't handled in try block");
                 }
-            }else {
-                System.out.println("Exception didn't happen");
             }
         }catch (NoSuchElementException e){
             System.out.println("Exception got executed");
@@ -133,8 +129,6 @@ public class Change_Profile_Info {
                 } catch (NoSuchElementException e) {
                     System.out.println("Exception wasn't handled in try block");
                 }
-            }else {
-                System.out.println("Exception didn't happen");
             }
         }catch (NoSuchElementException e){
             System.out.println("Exception got executed");
@@ -175,8 +169,6 @@ public class Change_Profile_Info {
                 } catch (NoSuchElementException e) {
                     System.out.println("Exception wasn't handled in try block");
                 }
-            }else {
-                System.out.println("Exception didn't happen");
             }
             Assert.assertTrue("Email address does not have all the elements", BrowserUtils.CheckEmailCharacters(email));
             BrowserUtils.waitFor(3);
@@ -200,7 +192,7 @@ public class Change_Profile_Info {
         wait.until(ExpectedConditions.elementToBeClickable(profile_settings_dashboard.languageInput));
         Select language = new Select(profile_settings_dashboard.languageInput);
         String defaultLanguage = language.getFirstSelectedOption().getText();
-        System.out.println(defaultLanguage);
+        System.out.println("defaultLanguage = " + defaultLanguage);
 
     }
 
@@ -222,11 +214,7 @@ public class Change_Profile_Info {
                } catch (NoSuchElementException e) {
                    System.out.println("Exception wasn't handled in try block");
                }
-           }else {
-               System.out.println("Exception didn't happen");
            }
-
-
        }catch (NoSuchElementException e){
            System.out.println("Exception block get executed");
        }
@@ -260,10 +248,7 @@ public class Change_Profile_Info {
                 } catch (NoSuchElementException e) {
                     System.out.println("Exception wasn't handled in try block");
                 }
-            }else {
-                System.out.println("Exception didn't happen");
             }
-
         }catch (NoSuchElementException e){
             System.out.println("Exception block get executed");
         }
@@ -285,8 +270,6 @@ public class Change_Profile_Info {
                 } catch (NoSuchElementException e) {
                     System.out.println("Exception wasn't handled in try block");
                 }
-            }else {
-                System.out.println("Exception didn't happen");
             }
         }catch (NoSuchElementException e){
         System.out.println("Exception got executed");
@@ -296,8 +279,7 @@ public class Change_Profile_Info {
     @When("user reset the email input box to default settings")
     public void user_reset_the_email_input_box_to_default_settings() {
         try {
-            wait.until(ExpectedConditions.visibilityOf(profile_settings_dashboard.inputBoxEmail));
-            profile_settings_dashboard.inputBoxEmail.click();
+            wait.until(ExpectedConditions.elementToBeClickable(profile_settings_dashboard.inputBoxEmail)).click();
             profile_settings_dashboard.inputBoxEmail.sendKeys(Keys.CONTROL,"a",Keys.BACK_SPACE);
             BrowserUtils.waitFor(3);
 
@@ -309,11 +291,7 @@ public class Change_Profile_Info {
                 } catch (NoSuchElementException e) {
                     System.out.println("Exception wasn't handled in try block");
                 }
-            }else {
-                System.out.println("Exception didn't happen");
             }
-
-
         }catch (NoSuchElementException e){
             System.out.println("Exception got executed");
         }
@@ -333,8 +311,6 @@ public class Change_Profile_Info {
                 } catch (NoSuchElementException e) {
                     System.out.println("Exception wasn't handled in try block");
                 }
-            }else {
-                System.out.println("Exception didn't happen");
             }
         }catch (NoSuchElementException e){
             System.out.println("Exception got executed");
@@ -356,8 +332,6 @@ public class Change_Profile_Info {
                 } catch (NoSuchElementException e) {
                     System.out.println("Exception wasn't handled in try block");
                 }
-            }else {
-                System.out.println("Exception didn't happen");
             }
         }catch (NoSuchElementException e){
             System.out.println("Exception got executed");
