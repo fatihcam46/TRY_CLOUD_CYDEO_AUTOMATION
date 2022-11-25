@@ -1,4 +1,4 @@
-@US-001 @CLOUD-1153
+@US-001 @CLOUD-1153 @LogIN
 Feature:CLOUD-1153
   US_001 Login Functionality [AutomationS3-EEZ]
 
@@ -65,7 +65,7 @@ Feature:CLOUD-1153
     When User  enter "<Username>" in user name field
     And enter "<Password>" in password field
     When Press enter
-    Then Check user is encounter massage "Please fill in this field." if  "<Username>" or "<Password>"  is empty
+    Then Check user is encounter massage "Please fill out this field." if  "<Username>" or "<Password>"  is empty
     @Adam
     Examples:
       | Username    | Password      |
