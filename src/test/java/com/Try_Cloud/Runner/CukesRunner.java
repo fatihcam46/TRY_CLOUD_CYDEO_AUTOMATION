@@ -14,10 +14,11 @@ import org.junit.runner.RunWith;
                 "rerun:target/rerun.txt",
                 "me.jvt.cucumber.report.PrettyReports:target/cucumber"
         },
+        features = "src/test/java/Resources/Search_Functuanilty.feature",
         glue = "com/Try_Cloud/Step_Definition",
-        features = "src/test/java/Resources",
+
         dryRun = false,
-        tags = "@Search"
+        tags = "@CLOUD-1458"
 
 
 )
