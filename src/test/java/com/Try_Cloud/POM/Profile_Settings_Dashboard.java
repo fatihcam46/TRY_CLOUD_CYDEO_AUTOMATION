@@ -1,9 +1,12 @@
 package com.Try_Cloud.POM;
 
 import com.Try_Cloud.Utilities.Driver;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+
+
 
 public class Profile_Settings_Dashboard {
 
@@ -23,31 +26,52 @@ public class Profile_Settings_Dashboard {
     @FindBy(xpath = " //span[@class='user-status-menu-item__header']")
     public WebElement profileIconUserName;
 
-    @FindBy(xpath = "(//div[@class='federation-menu'])[2]")
+    @FindBy(xpath = "(//div[starts-with(@class, 'federation-menu')])[2]")
     public WebElement iconVisibilityFullName;
 
-    @FindBy(xpath = "//div[@class='federationScopeMenu popovermenu bubble menu menu-center']/ul")
+    @FindBy(xpath = "//div[@class='federationScopeMenu popovermenu bubble menu menu-center']/ul/li/a")
     public WebElement optionVisibilityFullName;
 
-    @FindBy(xpath = "//input[@id='oc-dialog-0-content-input']")
-    public WebElement inputAuthentication;
+    @FindBy(xpath = "//div[contains(@class, 'oc-dialog password-confirmation')]")
+    public WebElement authenticationRequired;
 
-    @FindBy(xpath = "//strong[.='Trusted']")
+    @FindBy(xpath = "//input[contains(@id, 'oc-dialog')]")
+    public WebElement passwordInput;
+
+    @FindBy(xpath = "//div[@class='federationScopeMenu popovermenu bubble menu menu-center']/ul/li/a[@data-action='contacts']")
+    //@FindBy(xpath = "(//div[starts-with(@class, 'federation-menu')]//following::span[contains(@class, 'icon-contacts-dark')])[2]")
     public WebElement trustedStatus;
 
-    @FindBy(xpath = "//strong[.='Private']")
+    @FindBy(xpath = "//div[@class='federationScopeMenu popovermenu bubble menu menu-center']/ul/li/a[@data-action='private']")
+    //@FindBy(xpath = "(//div[starts-with(@class, 'federation-menu')]//following::span[contains(@class, 'icon-password')])[3]")
     public WebElement privateStatus;
 
-    @FindBy(xpath = "//strong[.='Public']")
+    @FindBy(xpath = "//div[@class='federationScopeMenu popovermenu bubble menu menu-center']/ul/li/a[@data-action='public']")
+    //@FindBy(xpath = "(//div[starts-with(@class, 'federation-menu')]//following::span[contains(@class, 'icon-link')])[1]")
     public WebElement publicStatus;
 
-    @FindBy(xpath = "//button[.='Confirm']")
+    @FindBy(xpath = "//button[text()='Confirm']")
     public WebElement confirmButton;
 
     @FindBy(xpath = "//p[.='Failed to authenticate, try again']")
     public WebElement msgWarning;
 
     @FindBy(xpath = "//input[@id='displaynamescope']")
-    public WebElement privatestatus;
+    public WebElement statusSelected;
+
+    @FindBy(xpath = "//input[@id='email']")
+    public WebElement inputBoxEmail;
+
+    @FindBy (xpath = "//select[@id='languageinput']")
+    public WebElement languageInput;
+
+    @FindBy(xpath = "//select[@id='localeinput']")
+    public WebElement locationInput;
+
+
+
+
+
+
 
 }

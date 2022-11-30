@@ -468,4 +468,56 @@ public class BrowserUtils {
         new WebDriverWait(Driver.getDriver(), time).until(ExpectedConditions.presenceOfElementLocated(by));
     }
 
+    public static boolean CheckEmailCharacters(String string){
+        if (string.isBlank() || string.isBlank()){
+            System.err.println("String cannot be empty or blank");
+        }
+
+        int count = 0;
+        int i;
+        char[] ch = string.toCharArray();
+        for (i = 0;i< ch.length;i++){
+
+            if (!(Character.isAlphabetic(ch[i])) && !(Character.isDigit(ch[i])) && !(Character.isWhitespace(ch[i]))){
+                count++;
+                System.out.println(ch[i]);
+            }
+        }if (count == 0){
+            System.out.print("String has no special characters :");
+        }else {
+            System.out.print("String has "+" "+count+" "+" special characters and "  );
+        }
+
+
+        for(int j = 0; j < string.length(); j++) {
+            if (Character.isWhitespace(string.charAt(j))){
+                System.out.println("String contains white spaces :"+ string);
+                return true;
+            }else if (Character.isLetter(string.charAt(j)) && (!(Character.isDigit(string.charAt(j))))) {
+                System.out.println("String contains just letters :"+ string);
+                return true;
+            }else if (Character.isLetterOrDigit(string.charAt(j))) {
+                System.out.println("String contains only letters or only numbers :"+ string);
+                return true;
+            }else {
+                System.err.println("String cannot be readed");
+            }
+        }
+        return true;
+
+
+    }
+
+
+
+    public static void Authentication(){
+        Driver.getDriver().findElement(By.xpath("//div[contains(@class, 'oc-dialog password-confirmation')]")).isDisplayed();
+        Driver.getDriver().findElement(By.xpath("//input[contains(@id, 'oc-dialog')]")).click();
+        Driver.getDriver().findElement(By.xpath("//input[contains(@id, 'oc-dialog')]")).sendKeys("Employee123");
+        Driver.getDriver().findElement(By.xpath("//button[text()='Confirm']")).sendKeys(Keys.ENTER);
+    }
+
 }
+
+
+
