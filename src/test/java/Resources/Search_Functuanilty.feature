@@ -3,7 +3,6 @@ Feature:
   As a user, I should be able to search file or contact from the Dashboard and
   see the photos under Photos Module
 
-  @CLOUD-1569
   Background: User should be logged in to the dashboard
     Given the user is logged in
 
