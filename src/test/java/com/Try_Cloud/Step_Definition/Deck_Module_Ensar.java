@@ -189,7 +189,7 @@ public class Deck_Module_Ensar {
 
     @And("Clean deck board")
     public void cleanDeckBoard() {
-
+        BrowserUtils.sleep(2);
         if (deck_module_pom.menuExpantButton.getAttribute("aria-expanded").equalsIgnoreCase("false")) {
             deck_module_pom.menuExpantButton.click();
         }
@@ -200,9 +200,9 @@ public class Deck_Module_Ensar {
             if (boards2.size() == 0) {
                 break;
             }
-
+            BrowserUtils.sleep(1);
             boards2.get(boards2.size() - 1).click();
-
+            BrowserUtils.sleep(2);
             new Deck_Module_POM().deleteButtonBar.click();
             BrowserUtils.sleep(1);
             new Deck_Module_POM().deleteButtonRedIcon.click();
