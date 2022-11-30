@@ -14,10 +14,7 @@ public class Search_Step_Definitons {
     LoginPage loginPage = new LoginPage();
     SearchFunctionality searchFunctionality = new SearchFunctionality();
 
-    @Given("the user is logged in")
-    public void theUserIsLoggedIn() {
-        new LoginPage().logIn();
-    }
+
 
     @When("user clicks to magnifying search button")
     public void userClicksToMagnifyingSearchButton() {
