@@ -7,6 +7,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.junit.Test;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 
@@ -33,6 +34,11 @@ public class Deck_Module_Ensar {
             deck_module_pom.menuExpantButton.click();
         }
         deck_module_pom.addBoard.click();
+    }
+
+    @Test
+    public void dnm(){
+        System.out.println("asdas");
     }
 
     @When("Write down  {string} in placeholder as board names")

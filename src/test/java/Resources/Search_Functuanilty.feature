@@ -1,4 +1,3 @@
-
 @CLOUD-1458
 Feature:
   As a user, I should be able to search file or contact from the Dashboard and
