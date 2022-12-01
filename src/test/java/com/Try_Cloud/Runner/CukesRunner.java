@@ -14,15 +14,15 @@ import org.junit.runner.RunWith;
                 "rerun:target/rerun.txt",
                 "me.jvt.cucumber.report.PrettyReports:target/cucumber"
         },
-        glue = "com/Try_Cloud/Step_Definition",
         features = "src/test/java/Resources",
+        glue = "com/Try_Cloud/Step_Definition",
+
         dryRun = false,
         tags = "@CLOUD-1452"
 
 
 
 
-)
 public class CukesRunner {
 
 }
