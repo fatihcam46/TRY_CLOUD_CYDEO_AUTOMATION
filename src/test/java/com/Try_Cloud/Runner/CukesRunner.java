@@ -18,10 +18,10 @@ import org.junit.runner.RunWith;
         glue = "com/Try_Cloud/Step_Definition",
 
         dryRun = false,
-        tags = "@CLOUD-1534"
+        tags = "@CLOUD-1452"
 
 
-)
+
 
 public class CukesRunner {
 
