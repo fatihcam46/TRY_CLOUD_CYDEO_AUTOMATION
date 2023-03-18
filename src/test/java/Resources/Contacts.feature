@@ -15,7 +15,7 @@ Acceptance Criteria:
 
 Background: User on the dashboard
   Given the user is logged in
-  When user click on the "Contacts" button
+  Then user click on the Contacts button
 
   @CLOUD-1553
     Scenario: User click "Contacts" button and click "New Contact" button can create new account..

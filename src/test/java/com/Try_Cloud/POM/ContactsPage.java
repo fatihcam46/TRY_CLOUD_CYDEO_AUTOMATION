@@ -29,7 +29,7 @@ public class ContactsPage {
         PageFactory.initElements(Driver.getDriver(), this);
     }
 
-    @FindBy(xpath="(//li[@data-id='contacts'])[1]")
+    @FindBy(xpath="//*[@id=\"appmenu\"]/li[6]/a/svg/image")
     public WebElement contacts;
 
 

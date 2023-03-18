@@ -96,23 +96,13 @@ public class Contacts_Steps {
 
         }
     }
-
-
-
-    @When("user click on the {string} button")
-    public void userClickOnTheButton(String Contacts) {
+    @Then("user click on the Contacts button")
+    public void userClickOnTheContactsButton() {
+        BrowserUtils.waitFor(2);
         contactsPage.contacts.click();
-
     }
 
-
-
-
-
-
-
-
-    @When("user click on {string} button")
+        @When("user click on {string} button")
     public void userClickOnButton(String arg0) {
         contactsPage.profileSettingsButton.click();
     }
@@ -137,4 +127,6 @@ public class Contacts_Steps {
         Assert.assertEquals(expectedTitle,contactsPage.pickAnAvatarTitle.getText());
 
     }
+
+
 }
